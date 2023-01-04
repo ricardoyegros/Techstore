@@ -12,4 +12,3 @@ export const privateAdminRoutes = {
     ORDERS: '/orders',
     UPDATE_ITEM: '/update-item',
 }
-

@@ -8,4 +8,4 @@ function AdminGuard() {
   }
   return user.rol ? <Outlet /> : <Navigate replace to={PrivateRoutes.USER} />;
 }
-export default AdminGuard;
+export default AdminGuard;  
