@@ -2,13 +2,14 @@ import {BrowserRouter, Route} from "react-router-dom"
 import NotFoundRoutes from "../src/utils/NotFoundRoutes"
 import { Provider } from "react-redux";
 import store from "../src/redux/store"
-import "./App.css";
 import AuthGuard from "./utils/auth.guard";
 import AdminGuard from "./utils/admin.guard";
 import {Admin} from "./routes/privates-routes/privates-admin-routes/Admin";
 import  {privateAdminRoutes}  from "./routes/privates-routes/privates-admin-routes";
 import  {PrivateRoutes}  from "./routes/privates-routes/private-user-routes";
 import { User } from "./routes/privates-routes/private-user-routes/User";
+import './App.css';
+
 
 function App() {
 
