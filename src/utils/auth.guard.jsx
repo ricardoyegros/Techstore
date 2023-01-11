@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { PublicRoutes } from "../routes/public-routes/"
 const AuthGuard = () => {
   const user = {
-    name: "a",
+    name: "mauri",
   };
   //const user = useSelector((store) => store.user);
   return user.name ? (

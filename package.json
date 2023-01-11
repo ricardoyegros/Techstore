@@ -11,6 +11,8 @@
   "dependencies": {
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
+    "esbuild": "0.16.16",
+    "esbuild-windows-64": "^0.15.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -23,6 +25,9 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
     "vite": "^4.0.0"
   }
 }

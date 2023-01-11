@@ -9,7 +9,7 @@ import  {privateAdminRoutes}  from "./routes/privates-routes/privates-admin-rout
 import  {PrivateRoutes}  from "./routes/privates-routes/private-user-routes";
 import { User } from "./routes/privates-routes/private-user-routes/User";
 import './App.css';
-
+import HomePage from "./pages/Homepage";
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
       <Provider store={store}>
       <BrowserRouter>
       <NotFoundRoutes>
-        <Route path="/" element={<h1>Homepage</h1>}/>
+        <Route path="/" element={<HomePage/>}/>
         <Route element={<AuthGuard/>}>
         <Route path={`${PrivateRoutes.USER}/*`} element={<User/>}/>
         </Route>

@@ -7,6 +7,8 @@ export function User() {
     <NotFoundRoutes>
       <Route path="/" element={<Navigate to='/' />} />
       <Route path={PrivateRoutes.FINAL_SHOP} element={<h1>Soy el final shop!!!</h1>} />
+      <Route path={PrivateRoutes.SHIPPING_FORM} element={<h1>Soy el shipping form!!!</h1>} />
+      <Route path={PrivateRoutes.DASHBOARD} element={<h1>Soy el Dashboard!!!</h1>} />
     </NotFoundRoutes>
   );
 }
