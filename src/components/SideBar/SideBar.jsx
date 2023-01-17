@@ -1,11 +1,11 @@
 export default function SideBar ({children}) {
     return(
         <aside>
-            <ul>
+            <ul className="hidden">
                 <li>Categorias</li>
                 <li>Marcas</li>
-                <div>{children}</div>
             </ul>
+                <div>{children}</div>
         </aside>
     )
 };

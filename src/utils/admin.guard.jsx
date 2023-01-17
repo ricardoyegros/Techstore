@@ -4,8 +4,8 @@ import {PrivateRoutes} from "../routes/privates-routes/private-user-routes"
 function AdminGuard() {
   //const user = useSelector((store) => store.user);
   const user = {
-    rol: "admin"
+    rol: "User",
   }
   return user.rol ? <Outlet /> : <Navigate replace to={PrivateRoutes.USER} />;
 }
-export default AdminGuard;  
+export default AdminGuard;

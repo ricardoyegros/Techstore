@@ -12,12 +12,12 @@ module.exports = {
   theme: {
     extend: {
        colors: {
-        'primary': '#C8EE44',
-        'secondary': '#29A073',
+        'primary': '#003F62',
+        'secondary': '#EDA415',
         'error': '#E5363D',
         'success': '#19D076',
-        'text1': '#1B212D',
-        'text2': '#929EAE',
+        'text1': '#292D32',
+        'text2': '#ffffff',
         'text3': '#ff77e9',
         'dark1': '#201E34',
         'dark2': '#282541',
@@ -35,6 +35,7 @@ module.exports = {
     screens: {
       'xs': '375px',
       '-xs': {max: '375px'},
+      '-sm': {max: '640px'},
       ...defaultTheme.screens,
     },
   },

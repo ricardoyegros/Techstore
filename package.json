@@ -12,14 +12,12 @@
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
     "esbuild": "0.16.16",
-    "esbuild-windows-64": "^0.15.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2",
-    "styled-components": "^5.3.6"
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
