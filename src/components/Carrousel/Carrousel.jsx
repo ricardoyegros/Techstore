@@ -36,14 +36,14 @@ export default function Carousel(props) {
     const styleButton = 'text-text2 bg-transparent font-extrabold p-2 my-0 mx-[5px] text-4xl';
 
     return (
-        <>
+        <div className='h-full flex items-center'>
             <img
                 src={`/src/assets/${selectedImage}`}
                 alt="Loading..."
                 className={loaded ? styleNoLoaded + " opacity-100" : styleNoLoaded + " opacity-0"}
                 onLoad={() => setLoaded(true)}
             />
-            <div className='relative flex items-center justify-between flex-row mt-[15px] -translate-y-60'>
+            <div className='bg-transparent flex justify-between flex-row mt-[15px] absolute w-full'>
                 {props.showButtons ? (
                     <>
                         <button className={styleButton} onClick={previous}>{"<"}</button>
@@ -53,6 +53,7 @@ export default function Carousel(props) {
                     <></>
                 )}
             </div>
-        </>
+        </div>
+
     );
 }

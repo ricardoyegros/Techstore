@@ -14,6 +14,7 @@ module.exports = {
        colors: {
         'primary': '#003F62',
         'secondary': '#EDA415',
+        'details': '#E2F4FF',
         'error': '#E5363D',
         'success': '#19D076',
         'text1': '#292D32',
@@ -27,6 +28,7 @@ module.exports = {
         'gray1': '#FAFAFA',
         'gray2': '#F8F8F8',
         'gray3': '#F5F5F5',
+        'border':'#A5A5A5',
       },
       fontFamily: {
         KumbhSans:['Kumbh Sans', 'sans-serif']
