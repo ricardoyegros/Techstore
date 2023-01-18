@@ -45,3 +45,5 @@ module.exports = {
     //require('flowbite/plugin')
   ],
 }
+
+console.log(defaultTheme.screens)
