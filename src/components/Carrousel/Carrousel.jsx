@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+export const styleButton = ' bg-trasparent font-extrabold p-2 my-0 mx-[5px] text-4xl';
 export default function Carousel(props) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [selectedImage, setSelectedImage] = useState(props.images[0]);
@@ -33,7 +34,6 @@ export default function Carousel(props) {
     };
 
     const styleNoLoaded = "w-full h-auto transition";
-    const styleButton = 'text-text2 bg-transparent font-extrabold p-2 my-0 mx-[5px] text-4xl';
 
     return (
         <div className='h-full flex items-center'>
@@ -46,8 +46,8 @@ export default function Carousel(props) {
             <div className='bg-transparent flex justify-between flex-row mt-[15px] absolute w-full'>
                 {props.showButtons ? (
                     <>
-                        <button className={styleButton} onClick={previous}>{"<"}</button>
-                        <button className={styleButton} onClick={next}>{">"}</button>
+                        <button className={styleButton + "  text-text2"} onClick={previous}>{"<"}</button>
+                        <button className={styleButton + " text-text2"} onClick={next}>{">"}</button>
                     </>
                 ) : (
                     <></>
