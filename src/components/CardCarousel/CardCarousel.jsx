@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export const CardCarousel = ({}) => {
+export const CardCarousel = ({text}) => {
   return (
     <div className="w-[320px] h-[140px] border-solid border-2 border-border rounded-2xl flex items-center justify-center gap-6">
       <img
@@ -11,7 +11,7 @@ export const CardCarousel = ({}) => {
       />
       <div className="h-full flex justify-center items-center text-primary flex-col bg-transparent">
         <h4>Notebook Test</h4>
-        <h4>(6 items left)</h4>
+        <h4>({text})</h4>
       </div>
     </div>
   );
