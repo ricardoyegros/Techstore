@@ -25,7 +25,7 @@ module.exports = {
         'dark_bg': '#1C1A2E',
         'dark_shade': '#1E1C30',
         'key_black': '#363A3F',
-        'gray1': '#FAFAFA',
+        'gray1': '#595959',
         'gray2': '#F8F8F8',
         'gray3': '#F5F5F5',
         'border':'#A5A5A5',
