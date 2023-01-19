@@ -76,7 +76,7 @@ export const SmCarousel = ({ device }) => {
           animate={{ x: 0 }}
           exit={{ x: -150 }}
           transition={{ duration: 0.5 }}
-          className="w-[95%] flex gap-2 justify-between "
+          className="w-[95%] flex gap-2 justify-between -md:justify-center"
         >
           {components[currentIndex]}
         </motion.div>
