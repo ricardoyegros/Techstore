@@ -7,7 +7,7 @@ function SignIn() {
   const [user, setUser] = useState({})
 
   /* Aca deberia despachar usuario y password para ver si esta bien */
-
+console.log(user);
   return (
     <>
       <nav className="bg-primary w-full h-20 flex justify-center items-center">
