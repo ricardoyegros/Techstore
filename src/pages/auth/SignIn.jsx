@@ -1,13 +1,15 @@
 import React , { useState } from "react";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import Footer from "../../components/Footer/Footer";
+import { Navigate } from 'react-router-dom';
 
 function SignIn() {
 
   const [user, setUser] = useState({})
+  
 
   /* Aca deberia despachar usuario y password para ver si esta bien */
-console.log(user);
+
   return (
     <>
       <nav className="bg-primary w-full h-20 flex justify-center items-center">
