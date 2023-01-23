@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 function SignInForm({setUser}) {
 
 const { register, formState: { errors }, handleSubmit } = useForm();
-console.log(handleSubmit)
+
 /* Ver si se puede poner afuera la funcion */
 const captureUserCredentials = (userData) =>{
   setUser(userData);

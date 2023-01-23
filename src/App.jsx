@@ -13,6 +13,7 @@ import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp/SignUp";
+import MailCheck from "./pages/auth/SignUp/MailCheck";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path={PublicRoutes.SING_IN} element={<SignIn/>}/>
         <Route path={PublicRoutes.SING_UP} element={<SignUp/>}/>
+        <Route path={`${PublicRoutes.SING_UP}/${PublicRoutes.SING_UP_MAIL}`} element={<MailCheck/>}/>
         <Route element={<AuthGuard/>}>
         <Route path={`${PrivateRoutes.USER}/*`} element={<User/>}/>
         </Route>
