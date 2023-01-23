@@ -3,7 +3,8 @@ import { UserLogo } from '../../assets/UserLogo/UserLogo';
 import CheckList from './CheckList';
 
 
-function SignUpFormCheckList({}) {
+
+function SignUpFormCheckList() {
 
   return (
         <>
@@ -15,6 +16,7 @@ function SignUpFormCheckList({}) {
         <p className='font-bold text-lg'>Tus datos</p>
         </div>
         <CheckList/>
+
         </div>
         </>
   )

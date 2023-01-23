@@ -1,14 +1,12 @@
 import React , { useState } from "react";
-
 import Footer from "../../../components/Footer/Footer";
 import SignUpFormCheckList from "../../../components/SignUpForm/SignUpFormCheckList";
 
 
 
+
 function SignUp() {
  
-  const [user, setUser] = useState({})
-
 
   return (
     <>
