@@ -12,6 +12,7 @@ import './App.css';
 import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
 import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/SignUp/SignUp";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <NotFoundRoutes>
         <Route path="/" element={<HomePage/>}/>
         <Route path={PublicRoutes.SING_IN} element={<SignIn/>}/>
+        <Route path={PublicRoutes.SING_UP} element={<SignUp/>}/>
         <Route element={<AuthGuard/>}>
         <Route path={`${PrivateRoutes.USER}/*`} element={<User/>}/>
         </Route>
