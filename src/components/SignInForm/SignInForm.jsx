@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 
 function SignInForm({setUser}) {
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
-
+const { register, formState: { errors }, handleSubmit } = useForm();
+console.log(handleSubmit)
+/* Ver si se puede poner afuera la funcion */
 const captureUserCredentials = (userData) =>{
   setUser(userData);
 };
@@ -21,18 +22,18 @@ const captureUserCredentials = (userData) =>{
         <input
            {...register("mail", { required: true })} 
            aria-invalid ={errors.mail ? "true" : "false"}
-            placeholder="Enter a email"
+            placeholder="Ingresa tu email"
             className='p-2 border rounded-md'
          />
-         {errors.mail?.type === 'required' && <p className='text-error text-sm -my-4' role="alert">Mail is required</p>}
-        <label htmlFor='passSignIn'>Password</label>
+         {errors.mail?.type === 'required' && <p className='text-error text-sm -my-4' role="alert">Debes ingresar tu email</p>}
+        <label htmlFor='passSignIn'>Contraseña</label>
         <input 
         {...register("password",{required:true})}
         aria-invalid ={errors.password ? "true" : "false"}
         className='p-2 border rounded-md'
-        placeholder="Enter your password"/>
-          {errors.password?.type === 'required' && <p className='text-error text-sm -my-4' role="alert">Password is required</p>}
-        <button type='submit' className='bg-secondary rounded-lg lg:p-2 xs:p-4 '>Sign In</button>
+        placeholder="Ingresa tu contraseña"/>
+          {errors.password?.type === 'required' && <p className='text-error text-sm -my-4' role="alert">Deber ingresar tu contraseña</p>}
+        <button type='submit' className='bg-secondary rounded-lg lg:p-2 xs:p-4 '>Iniciar sesión</button>
         </div>
         </form>
         </>
