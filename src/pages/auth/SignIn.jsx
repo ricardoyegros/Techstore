@@ -1,13 +1,17 @@
 import React , { useState } from "react";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import Footer from "../../components/Footer/Footer";
+import { useNavigate } from "react-router-dom";
+import { PublicRoutes } from "../../routes/public-routes";
+
 
 
 function SignIn() {
- 
+  const navigate = useNavigate()
+
+  /* Se guarda credenciales de usuario */
   const [user, setUser] = useState({})
   
-
   /* Aca deberia despachar usuario y password para ver si esta bien */
 
   return (
@@ -24,12 +28,14 @@ function SignIn() {
      
       
       <div className="flex flex-col items-center py-12">
-      <h1 className="text-4xl pb-12 text-center">Sign In</h1>
+      <h1 className="text-4xl pb-12 text-center">Iniciar sesión</h1>
         <SignInForm  setUser={setUser} />
         <div className="flex gap-6 my-3">
           {/* Falta agregar que le mande a esas rutas */}
-        <p>Forgot your password?</p>
-        <p>Create acount</p>
+        <p>¿Olvidaste tu contraseña?</p>
+        
+        <p onClick={()=>navigate(`/${PublicRoutes.SING_UP}`)}>Crear cuenta</p>
+        
         </div>
       </div>
       <Footer />

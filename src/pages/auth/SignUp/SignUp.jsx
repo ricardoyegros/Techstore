@@ -23,7 +23,7 @@ function SignUp() {
       </nav>
       <div className="flex flex-col items-center my-7">
       <SignUpFormCheckList/>
-      <p className="my-4">Have an acount? Sign In</p>
+      <p className="my-4">¿Ya tienes cuenta? Inicia sesión</p>
       </div>
       <Footer />
     </>

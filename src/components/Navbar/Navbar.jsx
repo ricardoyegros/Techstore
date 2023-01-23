@@ -11,7 +11,7 @@ export const Navbar = () => {
                     <h2 className='text-4xl font-bold hover:cursor-pointer -sm:hidden'>TechStore</h2>
                     <form className='flex w-fit -sm:w-full'>
                         <input type="text" className='rounded-l-lg h-10 w-72 text-text1 focus:border-none outline-none -sm:w-60 p-3' />
-                        <button type="submit" className='bg-secondary text-text2 rounded-r-lg px-5 -sm:px-3 hover:scale-105' >Search</button>
+                        <button type="submit" className='bg-secondary text-text2 rounded-r-lg px-5 -sm:px-3 hover:scale-105' >Buscar</button>
                     </form>
                 </div>
                 <div className='flex justify-center items-center gap-5 -sm:hidden'>
