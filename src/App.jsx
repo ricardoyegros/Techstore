@@ -11,13 +11,13 @@ import { User } from "./routes/privates-routes/private-user-routes/User";
 import './App.css';
 import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
-import SignIn from "./pages/auth/SignIn";
-import SignUp from "./pages/auth/SignUp/SignUp";
-
+import {lazy, Suspense} from "react";
+const SignIn = lazy(()=>import( "./pages/auth/SignIn"))
+const SignUp = lazy(()=>import( "./pages/auth/SignUp/SignUp"))
 function App() {
-
   return (
     <div className="App">
+    <Suspense fallback={<h1>Cargando.............</h1>}>
       <Provider store={store}>
       <BrowserRouter>
       <NotFoundRoutes>
@@ -33,6 +33,7 @@ function App() {
       </NotFoundRoutes>
       </BrowserRouter>
       </Provider>
+      </Suspense>
     </div>
   );
 }

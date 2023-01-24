@@ -2,7 +2,8 @@ import FacebookLogo from '../../assets/Facebook-logo.svg';
 import InstagramLogo from '../../assets/Instagram-logo.svg';
 import WhatsappLogo from '../../assets/Whatsapp-logo.svg';
 import TwitterLogo from '../../assets/Twitter-logo.svg';
-
+import { Link } from 'react-router-dom';
+import {PublicRoutes} from "../../routes/public-routes"
 export default function Footer() {
     return (
         <footer className="bg-details text-primary dark:bg-gray-900 w-full h-fit flex flex-col justify-center items-center py-16">
@@ -30,10 +31,10 @@ export default function Footer() {
                             <div className="w-full bg-black h-[1px]"></div>
                         </li>
                         <li className="mb-4">
-                            <a href="#" className="hover:underline">Registro</a>
+                            <Link to={`/${PublicRoutes.SING_UP}`} className="hover:underline">Registro</Link>
                         </li>
                         <li className="mb-4">
-                            <a href="#" className="hover:underline">Ingresar</a>
+                        <Link to={`/${PublicRoutes.SING_IN}`} className="hover:underline">Ingresar</Link>
                         </li>
                     </ul>
                 </div>
@@ -62,10 +63,11 @@ export default function Footer() {
                 </div>
 
             </div>
-
+            <Link to="/">
             <div className='w-full flex items-center justify-center font-extrabold text-primary'>
                 TechStore Copyright ® 2023
             </div>
+            </Link>
         </footer>
     )
 };
