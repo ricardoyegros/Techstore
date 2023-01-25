@@ -6,20 +6,37 @@ import MailCheck from "./MailCheck";
 import NameCheck from "./NameCheck";
 import PasswordCheck from "./PasswordCheck";
 import PhoneCheck from "./PhoneCheck";
+import Modal from "../Modal/Modal";
 
 function CheckList() {
-
+  
+  
+  /* Estados */
+  const [openModal, setOpenModal] = useState(false);
   const [user, setUser] = useState({});
   const [errorMsg, setErrorMsg] = useState({})
+  /* Para abrir y cerrar los formularios */
   const [openCheck, setOpenCheck] = useState({
-     mail: false ,
-     name: false ,
-     password: false,
-     id:false,
-     adress:false,
-     phone:false
-});
- console.log(errorMsg,"errores")
+    mail: false ,
+    name: false ,
+    password: false,
+    id:false,
+    adress:false,
+    phone:false
+  });
+  
+  /* Props del modal */
+  const propsModal = {
+    title:"¡Éxito!",
+    messageModal:"Te has registrado satisfactoriamente",
+    buttonMessage: "Volver al inicio",
+    setModal:setOpenModal,
+  };
+  
+ 
+
+
+ /* Ver forma de refactorizar estas funciones */
   const mailCheckButton = () => {
     if (user && user.email && !errorMsg?.email) {
       return (<button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
@@ -77,16 +94,25 @@ function CheckList() {
     }
   }; 
 
+
+
+  const onRegisterUser = () =>{
+      setOpenModal(!openModal);
+
+  }
+
   const saveAndContinueButton = () =>{
     let userLength = Object.entries(user);
     if(userLength.length === 9){
-     return(<button className="bg-secondary rounded-lg p-2 my-4" type="button">Guardar y continuar</button>)
+     return(<button onClick={onRegisterUser} className="bg-secondary rounded-lg p-2 my-4" type="button">Guardar y continuar</button>)
     }
-  }
-console.log(Object.entries(user))
+  };
+
+
 
   return (
     <div className="flex flex-col gap-5 w-full ml-4">
+      {openModal && <Modal {...propsModal}/>}
       <div className="flex flex-col">
         <div className="flex items-center justify-center">
           <div className="flex flex-col w-full ">
