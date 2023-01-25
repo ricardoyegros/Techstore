@@ -12,6 +12,7 @@ import './App.css';
 import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
 import {lazy, Suspense} from "react";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 const SignIn = lazy(()=>import( "./pages/auth/Sign In/SignIn"))
 const SignUp = lazy(()=>import( "./pages/auth/SignUp/SignUp"))
 const Contact = lazy(()=>import( "./pages/Contact/Contact.jsx"))
@@ -26,6 +27,7 @@ function App() {
         <Route path={PublicRoutes.SING_IN} element={<SignIn/>}/>
         <Route path={PublicRoutes.SING_UP} element={<SignUp/>}/>
         <Route path={PublicRoutes.CONTACT} element={<Contact/>}/>
+        <Route path={PublicRoutes.SHOPPING_CART} element={<ShoppingCart/>}/>
         <Route element={<AuthGuard/>}>
         <Route path={`${PrivateRoutes.USER}/*`} element={<User/>}/>
         </Route>

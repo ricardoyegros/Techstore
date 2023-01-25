@@ -82,7 +82,9 @@ export const Navbar = () => {
               alt="loading..."
               className="w-6 h-6 -sm:hidden"
             />
-            <h4 className="-lg:hidden">Carrito</h4>
+            <Link to={`${PublicRoutes.SHOPPING_CART}`}>
+            <button className="-lg:hidden">Carrito</button>
+            </Link>
           </div>
         </div>
       </div>
