@@ -17,7 +17,7 @@ function DireccionCheck({
 
   const captureCredentials = (addressData) => {
     setUser({ ...user,["street"]: addressData.street,["number"]:addressData.number});
-    setOpenCheck({ ...openCheck, adress: !openCheck.adress });
+    setOpenCheck({ ...openCheck, address: !openCheck.address });
   };
 
   const handleInput = (e) => {
