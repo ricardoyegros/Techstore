@@ -16,7 +16,7 @@ export default function Footer() {
                             <div className="w-full bg-black h-[1px]"></div>
                         </li>
                         <li className="mb-4">
-                            <a href="#" className="hover:underline">Contacto</a>
+                            <Link to={`/${PublicRoutes.CONTACT}`} className="hover:underline">Contacto</Link> 
                         </li>
                         <li className="mb-4">
                             <a href="#" className="hover:underline">Sobre Nosotros</a>

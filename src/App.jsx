@@ -14,6 +14,7 @@ import { PublicRoutes } from "./routes/public-routes";
 import {lazy, Suspense} from "react";
 const SignIn = lazy(()=>import( "./pages/auth/SignIn"))
 const SignUp = lazy(()=>import( "./pages/auth/SignUp/SignUp"))
+const Contact = lazy(()=>import( "./pages/Contact/Contact.jsx"))
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path={PublicRoutes.SING_IN} element={<SignIn/>}/>
         <Route path={PublicRoutes.SING_UP} element={<SignUp/>}/>
+        <Route path={PublicRoutes.CONTACT} element={<Contact/>}/>
         <Route element={<AuthGuard/>}>
         <Route path={`${PrivateRoutes.USER}/*`} element={<User/>}/>
         </Route>
