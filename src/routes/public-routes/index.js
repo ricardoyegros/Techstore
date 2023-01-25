@@ -1,6 +1,6 @@
 export const PublicRoutes = {
     CONTACT: 'contact-us',
-    DETAIL_ITEM: 'detail/:id',
+    DETAIL_ITEM: 'detail',
     SING_UP: 'sign-up',
     SING_UP_MAIL:'mail',
     SING_UP_NAME:'user-name',
