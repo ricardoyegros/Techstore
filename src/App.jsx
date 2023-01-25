@@ -12,7 +12,7 @@ import './App.css';
 import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
 import {lazy, Suspense} from "react";
-const SignIn = lazy(()=>import( "./pages/auth/SignIn"))
+const SignIn = lazy(()=>import( "./pages/auth/Sign In/SignIn"))
 const SignUp = lazy(()=>import( "./pages/auth/SignUp/SignUp"))
 function App() {
   return (

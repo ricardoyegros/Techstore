@@ -7,18 +7,20 @@ import PasswordCheck from "../../pages/auth/SignUp/PasswordCheck";
 function CheckList() {
 
   const [user, setUser] = useState({});
-
+  const [errorMsg, setErrorMsg] = useState({})
   const [openCheck, setOpenCheck] = useState({
      mail: false ,
      name: false ,
     password: false,
 });
-
+  console.log(errorMsg,"errores")
   const mailCheckButton = () => {
-    if (user && user.email) {
-      return <CheckLogo />;
+    if (user && user.email && !errorMsg?.email.length) {
+      return (<button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
+      Editar<CheckLogo />
+      </button>)
     } else {
-      return <button onClick={()=>setOpenCheck({mail:true,name:false,password:false})} className="bg-secondary rounded-lg p-2">Ingresar</button>;
+      return <button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} className="bg-secondary rounded-lg p-2">{openCheck.mail ? "Cerrar" : "Ingresar"}</button>;
     }
   };
 
@@ -26,7 +28,7 @@ function CheckList() {
     if (user && user.name) {
       return <CheckLogo />;
     } else {
-      return <button onClick={()=>setOpenCheck({mail:false,name:true,password:false})}  className="bg-secondary rounded-lg p-2">Ingresar</button>;
+      return <button onClick={()=>setOpenCheck({...openCheck,name:!openCheck.name})}  className="bg-secondary rounded-lg p-2">{openCheck.name ? "Cerrar" : "Ingresar"}</button>;
     }
   };
 
@@ -34,7 +36,14 @@ function CheckList() {
     if (user && user.password) {
       return <CheckLogo />;
     } else {
-      return <button onClick={()=>setOpenCheck({mail:false,name:false,password:true})} className="bg-secondary rounded-lg p-2">Ingresar</button>;
+      return <button onClick={()=>setOpenCheck({...openCheck,password:!openCheck.password})} className="bg-secondary rounded-lg p-2">{openCheck.password ? "Cerrar" : "Ingresar"}</button>;
+    }
+  }; 
+  const IdCheckButton = () => {
+    if (user && user.id) {
+      return <CheckLogo />;
+    } else {
+      return <button onClick={()=>setOpenCheck({...openCheck,id:!openCheck.id})} className="bg-secondary rounded-lg p-2">{openCheck.password ? "Cerrar" : "Ingresar"}</button>;
     }
   }; 
 
@@ -50,7 +59,7 @@ function CheckList() {
           </div>
           {mailCheckButton()}
         </div>
-        {openCheck.mail && <MailCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
+        {openCheck.mail && <MailCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
       </div>
       <div className="flex items-center justify-center">
         <div className="flex flex-col w-full ">
@@ -59,7 +68,7 @@ function CheckList() {
         </div>
          {nameCheckButton()} 
       </div>
-         {openCheck.name && <NameCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
+         {openCheck.name && <NameCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
       <div className="flex items-center justify-center">
         <div className="flex flex-col w-full ">
           <p className="text-lg">Ingresá una contraseña</p>
@@ -70,7 +79,37 @@ function CheckList() {
        {passwordCheckButton()}
       </div>
       {openCheck.password && <PasswordCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
-    </div>
+      <div className="flex items-center justify-center">
+        <div className="flex flex-col w-full ">
+          <p className="text-lg">Ingresa tu número de identificación.</p>
+          <p className="text-sm">
+          Te lo guardamos para rellenar datos de facturacion en caso de.
+          </p>
+        </div>
+{/*        {passwordCheckButton()}
+ */}      </div>
+{/*       {openCheck.password && <PasswordCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
+ */}      <div className="flex items-center justify-center">
+        <div className="flex flex-col w-full ">
+          <p className="text-lg">Ingresá una contraseña</p>
+          <p className="text-sm">
+            Debe tener entre 5 a 12 carácteres y al menos una mayúscula.
+          </p>
+        </div>
+{/*        {passwordCheckButton()}
+ */}      </div>
+{/*       {openCheck.password && <PasswordCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
+ */}      <div className="flex items-center justify-center">
+        <div className="flex flex-col w-full ">
+          <p className="text-lg">Ingresá una contraseña</p>
+          <p className="text-sm">
+            Debe tener entre 5 a 12 carácteres y al menos una mayúscula.
+          </p>
+        </div>
+{/*        {passwordCheckButton()}
+ */}      </div>
+{/*       {openCheck.password && <PasswordCheck user={user} setOpenCheck={setOpenCheck} setUser={setUser} />}
+ */}    </div>
   );
 }
 

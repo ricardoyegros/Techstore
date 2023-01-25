@@ -4,7 +4,7 @@ function CheckLogo() {
   return (
     
    
-    <svg width="50px" height="50px" viewBox="-4.08 -4.08 32.16 32.16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#" stroke="#">
+    <svg width="30px" height="30px" viewBox="-4.08 -4.08 32.16 32.16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#" stroke="#">
     
     <g id="SVGRepo_bgCarrier" stroke-width="0"/>
     
