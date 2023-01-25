@@ -2,7 +2,7 @@ import React from "react";
 import { UserLogo } from "../../assets/UserLogo/UserLogo";
 import CheckList from "./CheckList";
 
-function SignUpFormCheckList({}) {
+function SignUpFormCheckList() {
   return (
        <div className="flex flex-col items-center justify-center border rounded-lg lg:p-16 md:p-12 sm:p-8 xs:p-4">
        <UserLogo/>
