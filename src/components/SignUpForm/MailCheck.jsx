@@ -6,13 +6,13 @@ function MailCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg 
 
 /* hook useForm */
  const { register, formState: { errors }, handleSubmit } = useForm();
-
+/* Onsubmit function */
  const captureCredentials = (mailData) =>{
-      setOpenCheck({...openCheck,mail:!openCheck.mail})
+      setOpenCheck({...openCheck,email:!openCheck.email})
       setUser({...user,["email"]:mailData.email});
       
  };
-
+/* Onchange function */
  const handleInput = (e) => {
     setUser({...user,[e.target.name]:mailData.email})
       if(errors){

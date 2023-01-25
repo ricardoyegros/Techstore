@@ -17,11 +17,11 @@ function CheckList() {
   const [errorMsg, setErrorMsg] = useState({})
   /* Para abrir y cerrar los formularios */
   const [openCheck, setOpenCheck] = useState({
-    mail: false ,
+    email: false ,
     name: false ,
     password: false,
     id:false,
-    adress:false,
+    address:false,
     phone:false
   });
   
@@ -33,69 +33,16 @@ function CheckList() {
     setModal:setOpenModal,
   };
   
- 
-
-
- /* Ver forma de refactorizar estas funciones */
-  const mailCheckButton = () => {
-    if (user && user.email && !errorMsg?.email) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
+  const checkButton = (type,setState,state) =>{
+    if (user && type === "address" ?(user.street): user[type] && (!errorMsg[type] || !errorMsg[type].length)) {
+      return (<button onClick={()=>setState({...state,[type]:!state[type]})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
       Editar<CheckLogo />
       </button>)
     } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} className="bg-secondary rounded-lg p-2">{openCheck.mail ? "Cerrar" : "Ingresar"}</button>;
+      return (<button onClick={()=>setState({...state,[type]:!state[type]})} className="bg-secondary rounded-lg p-2">{state[type] ? "Cerrar" : "Ingresar"}</button>)
     }
   };
-
-   const nameCheckButton = () => {
-    if (user && user.name && user.lastname && !errorMsg?.name.length) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,name:!openCheck.name})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
-      Editar<CheckLogo />
-      </button>)
-    } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,name:!openCheck.name})}  className="bg-secondary rounded-lg p-2">{openCheck.name ? "Cerrar" : "Ingresar"}</button>;
-    }
-  };
-
-  const passwordCheckButton = () => {
-    if (user && user.password && !errorMsg?.password.length) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,mail:!openCheck.mail})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
-      Editar<CheckLogo />
-      </button>)
-    } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,password:!openCheck.password})} className="bg-secondary rounded-lg p-2">{openCheck.password ? "Cerrar" : "Ingresar"}</button>;
-    }
-  }; 
-  const IdCheckButton = () => {
-    if (user && user.id && !errorMsg.id.length) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,id:!openCheck.id})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
-      Editar<CheckLogo />
-      </button>)
-    } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,id:!openCheck.id})} className="bg-secondary rounded-lg p-2">{openCheck.id ? "Cerrar" : "Ingresar"}</button>;
-    }
-  }; 
-  const adressCheckButton = () => {
-    if (user && user.street && !errorMsg.street.length) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,adress:!openCheck.adress})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
-      Editar<CheckLogo />
-      </button>)
-    } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,adress:!openCheck.adress})} className="bg-secondary rounded-lg p-2">{openCheck.adress ? "Cerrar" : "Ingresar"}</button>;
-    }
-  }; 
-  const phoneCheckButton = () => {
-    if (user && user.phone && !errorMsg.phone.length) {
-      return (<button onClick={()=>setOpenCheck({...openCheck,phone:!openCheck.phone})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
-      Editar<CheckLogo />
-      </button>)
-    } else {
-      return <button onClick={()=>setOpenCheck({...openCheck,phone:!openCheck.phone})} className="bg-secondary rounded-lg p-2">{openCheck.phone ? "Cerrar" : "Ingresar"}</button>;
-    }
-  }; 
-
-
-
+  
   const onRegisterUser = () =>{
       setOpenModal(!openModal);
 
@@ -121,16 +68,16 @@ function CheckList() {
               Solo recibirás notificaciones, nada de spam
             </p>
           </div>
-          {mailCheckButton()}
+          {checkButton("email",setOpenCheck,openCheck)}
         </div>
-        {openCheck.mail && <MailCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
+        {openCheck.email && <MailCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
       </div>
       <div className="flex items-center justify-center">
         <div className="flex flex-col w-full ">
           <p className="text-lg">Ingresá tu nombre completo</p>
           <p className="text-sm">Así sabremos como llamarte</p>
         </div>
-         {nameCheckButton()} 
+         {checkButton("name",setOpenCheck,openCheck)} 
       </div>
          {openCheck.name && <NameCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
       <div className="flex items-center justify-center">
@@ -140,7 +87,7 @@ function CheckList() {
             Para proteger tu cuenta
           </p>
         </div>
-       {passwordCheckButton()}
+       {checkButton("password",setOpenCheck,openCheck)}
       </div>
       {openCheck.password && <PasswordCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser}  />}
       <div className="flex items-center justify-center">
@@ -150,7 +97,7 @@ function CheckList() {
           Te lo guardamos para rellenar datos de facturacion en caso de compra
           </p>
         </div>
-       {IdCheckButton()}
+       {checkButton("id",setOpenCheck,openCheck)}
        </div>
   {openCheck.id && <IdCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser}/>}
       <div className="flex items-center justify-center">
@@ -160,9 +107,9 @@ function CheckList() {
           Asi sabremos donde mandarte tus productos
           </p>
         </div>
-       {adressCheckButton()}
+       {checkButton("address",setOpenCheck,openCheck)}
     </div>
-     {openCheck.adress && <DireccionCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
+     {openCheck.address && <DireccionCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
        <div className="flex items-center justify-center">
         <div className="flex flex-col w-full ">
           <p className="text-lg">Número de contacto</p>
@@ -170,7 +117,7 @@ function CheckList() {
            Solo te llamaremos si es necesario
           </p>
         </div>
-        {phoneCheckButton()}
+        {checkButton("phone",setOpenCheck,openCheck)}
        </div>
        {openCheck.phone && <PhoneCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
        {saveAndContinueButton()}
