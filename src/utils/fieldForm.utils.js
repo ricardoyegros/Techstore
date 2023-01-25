@@ -1,6 +1,8 @@
-export function fieldFormUtils(state, setState){
+export function fieldFormUtils(state, setState,modal, setModal){
     const saveMessage = (formValues) => {
         setState(formValues);
+        console.log(formValues);
+        setModal(true);
       };
     
       const handleFormChange = (e) => {
