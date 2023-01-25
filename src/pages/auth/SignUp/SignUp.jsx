@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SignUpFormCheckList from "../../../components/SignUpForm/SignUpFormCheckList";
 import Layout from "../../../components/Layout/Layout"
 import { Link } from "react-router-dom";

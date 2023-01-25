@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { set, useForm } from 'react-hook-form';
+import React from 'react'
+import { useForm } from 'react-hook-form';
 
 function MailCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg }) {
 
@@ -8,19 +8,18 @@ function MailCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg 
  const { register, formState: { errors }, handleSubmit } = useForm();
 
  const captureCredentials = (mailData) =>{
-   if(!errors.email){
       setOpenCheck({...openCheck,mail:!openCheck.mail})
-      setUser(mailData);
-   }
+      setUser({...user,["email"]:mailData.email});
+      
  };
 
  const handleInput = (e) => {
-    setUser({...user,[e.target.name]:e.target.value})
+    setUser({...user,[e.target.name]:mailData.email})
       if(errors){
          setErrorMsg({...errorMsg,[e.target.name]:errors})
       }
  };
- console.log(user,"user")
+
 
   return (
     <form onSubmit={handleSubmit(captureCredentials)} onChange={handleInput} className='flex flex-col gap-3 my-3 '>
@@ -37,8 +36,8 @@ function MailCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg 
            })} 
            aria-invalid ={errors.email ? "true" : "false"}
            className='p-2 border rounded-md'
-           value={user.email}
-           onChange={handleInput}
+           
+          
 
          />
          {errors.email?.message && <p className="text-error text-sm">{errors.email.message}</p>}
