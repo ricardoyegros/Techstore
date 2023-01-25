@@ -2,7 +2,6 @@ export function inputField(type, register, handleFormChange, errors) {
   const fieldClass = "p-2 border rounded-md";
   const errorClass = "text-error text-sm -my-4";
   let placeholder = "";
-  let errorMessage = "";
   if (type == "name") {
     placeholder = "Ingresa tu nombre";
   }
