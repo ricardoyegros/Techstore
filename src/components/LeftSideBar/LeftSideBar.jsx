@@ -1,6 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sendFiltersBrand } from "../../redux/actions/filterProductsBrands";
+import { sendFiltersCatagories } from "../../redux/actions/filterProductsCategories";
+
 export const LeftSideBar = () => {
+  const dispatch = useDispatch();
   const categorys = useSelector(
     (state) => state.getAllCategorysReducer.allCategorys
   );
@@ -28,6 +32,8 @@ export const LeftSideBar = () => {
                   type="checkbox"
                   id={category.id}
                   className="bg-details opacity-0 checked:opacity-100 w-6 h-6"
+                  onChange={()=>sendFiltersCatagories(category)}
+                 
                 />
               </div>
             </div>
@@ -54,6 +60,7 @@ export const LeftSideBar = () => {
                 type="checkbox"
                 id={brand.id}
                 className="bg-details opacity-0 checked:opacity-100 w-6 h-6"
+                onChange={()=>dispatch(sendFiltersBrand(brand))}
               />
             </div>
           </div>
