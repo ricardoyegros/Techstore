@@ -16,4 +16,7 @@ export default function getAllBrandsReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+
+

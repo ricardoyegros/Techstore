@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { MainCard } from '../MainCard/MainCard';
 export const RightSideBar = () => {
   let allProducts = useSelector((state)=>state.getAllProductsReducer.allProducts.content)
-  console.log(allProducts);
   const categorys = useSelector((state)=>state.getAllCategorysReducer.allCategorys);
   const brands = useSelector((state)=>state.getAllBrandsReducer.allBrands);
   const classForSelects = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-3 w-60 ';
