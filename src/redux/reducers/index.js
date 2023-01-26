@@ -3,4 +3,5 @@ import getAllProductsReducer from "./getAllProducts.reducer";
 import getAllCategorysReducer from "./getAllCategorys.reducer";
 import getAllBrandsReducer from "./getAllBrands.reducer";
 import getDetailProductReducer from "./getDetailProduct.reducer";
-export default combineReducers({getAllProductsReducer,getAllCategorysReducer,getAllBrandsReducer,getDetailProductReducer});
+import userRegisterReducer from "./userRegister.reducer";
+export default combineReducers({getAllProductsReducer,getAllCategorysReducer,getAllBrandsReducer,getDetailProductReducer,userRegisterReducer});
