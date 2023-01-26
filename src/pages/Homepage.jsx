@@ -1,14 +1,25 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Carousel from "../components/Carrousel/Carrousel";
 import Layout from "../components/Layout/Layout";
 import { Products } from "../components/Products/Products";
 import { SmCarousel } from "../components/SmCarousel/SmCarousel";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { getAllProducts } from "../redux/actions/getAllProducts";
+import { getAllCategorys } from "../redux/actions/getAllCategorys";
+import { getAllBrands } from "../redux/actions/getAllBrands";
 import { deviceType } from "../utils/deviceType";
 
 export default function HomePage() {
   const images = ["carrousel1.jpg", "carrousel2.jpg", "carrousel3.jpg"];
   const windowSize = useWindowSize();
   const device = deviceType(windowSize?.width);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getAllProducts());
+    dispatch(getAllCategorys());
+    dispatch(getAllBrands());
+  },[])
   return (
     <Layout>
       <Carousel images={images} showButtons={true} />

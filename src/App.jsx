@@ -15,6 +15,9 @@ import { lazy, Suspense } from "react";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 
 import { Details } from "./pages/Details";
+import { getAllProducts } from "./redux/actions/getAllProducts";
+import { getAllCategorys } from "./redux/actions/getAllCategorys";
+import { getAllBrands } from "./redux/actions/getAllBrands";
 
 const SignIn = lazy(() => import("./pages/auth/Sign In/SignIn"));
 const SignUp = lazy(() => import("./pages/auth/SignUp/SignUp"));
