@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FavLogo from "../../assets/Fav-logo.svg";
 import FavNoLogo from "../../assets/FavNo-logo.svg";
 import CartLogo from "../../assets/cart-logo-product.svg";
@@ -11,9 +11,9 @@ export const MainCard = ({ salePrice, name, images, id }) => {
   const [state, setState] = useState(false);
   return (
     <div className="flex flex-col w-[250px] h-[250px] items-center bg-transparent border-border border-2 rounded-3xl">
+      <Link to={`/${PublicRoutes.DETAIL}/${id}`}>
       <div className="flex justify-center w-[90%]">
         <img
-          onClick={() => navigate(`/${PublicRoutes.DETAIL_ITEM}?id=${id}`)}
           src={images[0].url}
           alt="loading..."
           className="h-36 w-36 mt-2.5 p-3 rounded-3xl select-none hover:cursor-pointer"
@@ -42,9 +42,10 @@ export const MainCard = ({ salePrice, name, images, id }) => {
       </div>
       <div className="w-[90%] h-full flex flex-col items-center text-primary">
         <StarRating numberOfStars={3.5} sizeStar={8} />
-        <h4>{name.substr(0, 16) + "..."}</h4>
+        <h4>{name.substr(0, 13) + "..."}</h4>
         <h5>Price: {"$ " + salePrice}</h5>
       </div>
+      </Link>
     </div>
   );
 };

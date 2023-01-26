@@ -2,30 +2,26 @@ import React, { useState } from "react";
 import { CardCarousel } from "../CardCarousel/CardCarousel";
 import { styleButton } from "../Carrousel/Carrousel";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 export const SmCarousel = ({ device }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const allProducts = useSelector((state) => state.getAllProductsReducer.allProducts.content);
   const handleNextClick = () => {
     setCurrentIndex((currentIndex + 1) % components.length);
   };
-
+  
   const handlePrevClick = () => {
     setCurrentIndex((currentIndex - 1 + components.length) % components.length);
   };
 
-  let products = [
-    "Producto1",
-    "Producto2",
-    "Producto3",
-    "Producto4",
-    "Producto5",
-    "Producto6",
-    "Producto7",
-    "Producto8",
-    "Producto9",
-  ];
-
+  let products = [];
+  if(allProducts){
+    for(let i = 0; i < 9 ; i++){
+      products.push(allProducts[Math.floor(Math.random()*allProducts.length)]);
+    }
+  }
+  
   const toRender = (size, slice, products) => {
     let total = 3;
     if (size === "Desktop") total = 3;
@@ -34,7 +30,7 @@ export const SmCarousel = ({ device }) => {
     let r = [];
 
     for (let i = slice; i < products.length && r.length < total; i++) {
-      r.push(<CardCarousel text={products[i]} />);
+      r.push(<CardCarousel product={products[i]} />);
     }
     return r;
   };

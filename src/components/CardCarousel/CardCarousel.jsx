@@ -1,18 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {PublicRoutes} from "../../routes/public-routes"
 
 
-export const CardCarousel = ({text}) => {
+export const CardCarousel = ({product}) => {
   return (
-    <div className="w-[320px] h-[140px] border-solid border-2 border-border rounded-2xl flex items-center justify-center gap-6">
+    <Link to={`${PublicRoutes.DETAIL}/${product.id}`}>
+    <div className="w-[320px] h-[140px] border-solid border-2 border-border rounded-2xl flex items-center justify-center gap-6 p-5">
       <img
-        src="https://images.fravega.com/f300/5ab6af9703136da67b83d8ffa568ecf0.jpg"
+        src={product.images[0]?.url}
         alt="loading..."
-        className="h-32 w-32"
+        className="h-28 w-28"
       />
       <div className="h-full flex justify-center items-center text-primary flex-col bg-transparent">
-        <h4>Notebook Test</h4>
-        <h4>({text})</h4>
+        <h4>({product.name.substr(0, 20) + "..."})</h4>
       </div>
     </div>
+    </Link>
   );
 };
