@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FavLogo from '../../assets/Fav-logo.svg';
 import FavNoLogo from '../../assets/FavNo-logo.svg';
 
 export const MainCard = ({ text }) => {
+
+    const navigate = useNavigate();
 
     const [state, setState] = useState(false);
 
@@ -10,9 +13,10 @@ export const MainCard = ({ text }) => {
         <div className='flex flex-col w-[250px] h-[250px] items-center bg-transparent border-border border-2 rounded-3xl'>
             <div className='flex justify-center w-[90%]'>
                 <img
+                    onClick={()=> navigate('/detail?id=5')}
                     src="https://images.fravega.com/f300/5ab6af9703136da67b83d8ffa568ecf0.jpg"
                     alt="loading..."
-                    className="h-36 w-[90%] rounded-3xl select-none"
+                    className="h-36 w-[90%] rounded-3xl select-none hover:cursor-pointer"
                 />
                 <button onClick={() => setState(!state)} className='absolute mt-4 ml-48 rounded-full p-1'>
                     {<img src={state ? FavLogo : FavNoLogo} alt="loading..." className='w-6 h-6 hover:w-8 hover:h-8 transition-all' />}
