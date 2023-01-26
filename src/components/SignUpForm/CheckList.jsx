@@ -7,6 +7,8 @@ import NameCheck from "./NameCheck";
 import PasswordCheck from "./PasswordCheck";
 import PhoneCheck from "./PhoneCheck";
 import Modal from "../Modal/Modal";
+import { registerUser } from "../../redux/actions/UserRegister/putUserRegister";
+import { useDispatch , useSelector } from "react-redux";
 
 function CheckList() {
   
@@ -20,9 +22,9 @@ function CheckList() {
     email: false ,
     name: false ,
     password: false,
-    id:false,
+    identification:false,
     address:false,
-    phone:false
+    contact:false
   });
   
   /* Props del modal */
@@ -32,9 +34,9 @@ function CheckList() {
     buttonMessage: "Volver al inicio",
     setModal:setOpenModal,
   };
-  
+  /* Funcion que renderiza checkbutton */
   const checkButton = (type,setState,state) =>{
-    if (user && type === "address" ?(user.street): user[type] && (!errorMsg[type] || !errorMsg[type].length)) {
+    if (user &&  user[type] && (!errorMsg[type] || !errorMsg[type].length)) {
       return (<button onClick={()=>setState({...state,[type]:!state[type]})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
       Editar<CheckLogo />
       </button>)
@@ -42,15 +44,22 @@ function CheckList() {
       return (<button onClick={()=>setState({...state,[type]:!state[type]})} className="bg-secondary rounded-lg p-2">{state[type] ? "Cerrar" : "Ingresar"}</button>)
     }
   };
-  
+
+  /* submit */
+  const dispatch = useDispatch()
+  const status = useSelector((state)=>state.userRegisterReducer.status);
+
   const onRegisterUser = () =>{
-      setOpenModal(!openModal);
+     dispatch(registerUser(user));
+     if(status == 201){
+       setOpenModal(!openModal) 
+     }
 
   }
 
   const saveAndContinueButton = () =>{
     let userLength = Object.entries(user);
-    if(userLength.length === 9){
+    if(userLength.length === 8){
      return(<button onClick={onRegisterUser} className="bg-secondary rounded-lg p-2 my-4" type="button">Guardar y continuar</button>)
     }
   };
@@ -97,9 +106,9 @@ function CheckList() {
           Te lo guardamos para rellenar datos de facturacion en caso de compra
           </p>
         </div>
-       {checkButton("id",setOpenCheck,openCheck)}
+       {checkButton("identification",setOpenCheck,openCheck)}
        </div>
-  {openCheck.id && <IdCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser}/>}
+  {openCheck.identification && <IdCheck  errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser}/>}
       <div className="flex items-center justify-center">
         <div className="flex flex-col w-full ">
           <p className="text-lg">Dirección</p>
@@ -117,9 +126,9 @@ function CheckList() {
            Solo te llamaremos si es necesario
           </p>
         </div>
-        {checkButton("phone",setOpenCheck,openCheck)}
+        {checkButton("contact",setOpenCheck,openCheck)}
        </div>
-       {openCheck.phone && <PhoneCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
+       {openCheck.contact && <PhoneCheck errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}
        {saveAndContinueButton()}
     </div>
   );

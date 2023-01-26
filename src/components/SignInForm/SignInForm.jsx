@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-function SignInForm({ setUser,user }) {
+function SignInForm() {
+  /* State user */
+  const [user, setUser] = useState({});
   /* useForm hook */
   const {
     register,
@@ -10,12 +12,15 @@ function SignInForm({ setUser,user }) {
   } = useForm();
 /*  */
   let formRef = useRef();
-/* submit funcion */
+/* submit funcion y  dispatch  */
+
   const captureUserCredentials = (userData) => {
     setUser(userData);
+    let {mail , password} = userData;
     formRef.current.reset();
+    
   };
-/*  */
+/* OnChange */
   const handleChange = (e) =>{
     setUser({
       ...user,

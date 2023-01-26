@@ -16,7 +16,7 @@ function DireccionCheck({
   } = useForm();
 
   const captureCredentials = (addressData) => {
-    setUser({ ...user,["street"]: addressData.street,["number"]:addressData.number});
+    setUser({ ...user,["address"]: addressData.address});
     setOpenCheck({ ...openCheck, address: !openCheck.address });
   };
 
@@ -34,7 +34,7 @@ function DireccionCheck({
       className="flex flex-col gap-3 my-3 "
     >
       <input
-        {...register("street", {
+        {...register("address", {
           required: {
             value: true,
             message: "Ingrese su calle",
@@ -48,7 +48,7 @@ function DireccionCheck({
         placeholder="Calle"
         className="p-2 border rounded-md"
       />
-      <input
+   {/*    <input
         {...register("number", {
           required: {
             value: true,
@@ -62,19 +62,19 @@ function DireccionCheck({
         aria-invalid={errors.number ? "true" : "false"}
         placeholder="Número"
         className="p-2 border rounded-md"
-      />
+      /> */}
       <button
         type="submit"
         className="bg-secondary rounded-lg lg:p-2 xs:p-4 w-32 "
       >
         Guardar
       </button>
-      {errors.street?.message && (
-        <p className="text-error text-sm">{errors.street.message}</p>
+      {errors.address?.message && (
+        <p className="text-error text-sm">{errors.address.message}</p>
       )}
-      {errors.number?.message && (
+   {/*    {errors.number?.message && (
         <p className="text-error text-sm">{errors.number.message}</p>
-      )}
+      )} */}
     </form>
   );
 }

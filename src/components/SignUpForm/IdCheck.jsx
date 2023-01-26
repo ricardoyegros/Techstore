@@ -8,8 +8,8 @@ function IdCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg })
  const { register, formState: { errors }, handleSubmit } = useForm();
 
  const captureCredentials = (idData) =>{
-      setOpenCheck({...openCheck,id:!openCheck.id})
-      setUser({...user,["typeId"]:idData.typeId,["id"]:idData.id});
+      setOpenCheck({...openCheck,identification:!openCheck.identification})
+      setUser({...user,["typeIdentification"]:idData.typeIdentification,["identification"]:(idData.identification).toString()});
  };
 
  const handleInput = (e) => {
@@ -19,12 +19,11 @@ function IdCheck({ user,setUser,setOpenCheck , openCheck,setErrorMsg,errorMsg })
       }
  };
 
-console.log(openCheck)
-console.log(user)
+
   return (
     <>
       <form onSubmit={handleSubmit(captureCredentials)} onChange={handleInput} className='flex  gap-3 my-3 '>
-        <select  {...register("typeId", 
+        <select  {...register("typeIdentification", 
            { required: {
             value:true,
             message:"Seleccione uno"
@@ -37,7 +36,7 @@ console.log(user)
         </select>
        
     <input
-           {...register("id", 
+           {...register("identification", 
            { required: {
             value:true,
             message:"Ingrese un numero de Id"
@@ -52,7 +51,7 @@ console.log(user)
             }
             
            })} 
-           aria-invalid ={errors.id ? "true" : "false"}
+           aria-invalid ={errors.identification ? "true" : "false"}
            className='p-2 border rounded-md'
          
          />
@@ -60,8 +59,8 @@ console.log(user)
       
          <button type='submit' className='bg-secondary rounded-lg lg:p-2 xs:p-4 w-32 '>Guardar</button>
     </form>
-    {errors.typeId?.message && <p className="text-error text-sm">{errors.typeId.message}</p>}
-    {errors.typeId?.message && <p className="text-error text-sm">{errors.typeId.message}</p>}{errors.id?.message && <p className="text-error text-sm">{errors.id.message}</p>}
+    {errors.typeIdentification?.message && <p className="text-error text-sm">{errors.typeIdentification.message}</p>}
+    {errors.typeIdentification?.message && <p className="text-error text-sm">{errors.identification.message}</p>}{errors.identification?.message && <p className="text-error text-sm">{errors.identification.message}</p>}
     </>
   
   )
