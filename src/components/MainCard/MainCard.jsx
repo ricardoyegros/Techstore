@@ -5,9 +5,12 @@ import FavNoLogo from "../../assets/FavNo-logo.svg";
 import CartLogo from "../../assets/cart-logo-product.svg";
 import { StarRating } from "../StarsRating/StarRating";
 import {PublicRoutes} from "../../routes/public-routes"
+import { addToCart } from "../../redux/actions/cartActions";
+import { useDispatch } from "react-redux";
 
 export const MainCard = ({ salePrice, name, images, id }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [state, setState] = useState(false);
   return (
     <div className="flex flex-col w-[250px] h-[250px] items-center bg-transparent border-border border-2 rounded-3xl">
@@ -30,7 +33,7 @@ export const MainCard = ({ salePrice, name, images, id }) => {
             />
           }
         </button>
-        <button className="absolute mt-14 ml-48 rounded-full p-1">
+        <button onClick={()=>{dispatch(addToCart(name)), navigate(`/${PublicRoutes.SHOPPING_CART}`)}} className="absolute mt-14 ml-48 rounded-full p-1">
           {
             <img
               src={CartLogo}

@@ -4,4 +4,12 @@ import getAllCategorysReducer from "./getAllCategorys.reducer";
 import getAllBrandsReducer from "./getAllBrands.reducer";
 import getDetailProductReducer from "./getDetailProduct.reducer";
 import userRegisterReducer from "./userRegister.reducer";
-export default combineReducers({getAllProductsReducer,getAllCategorysReducer,getAllBrandsReducer,getDetailProductReducer,userRegisterReducer});
+import shoppingCartReducer from "./shoppingCart.reducer";
+export default combineReducers({
+  getAllProductsReducer,
+  getAllCategorysReducer,
+  getAllBrandsReducer,
+  getDetailProductReducer,
+  userRegisterReducer,
+  shoppingCartReducer
+});

@@ -55,7 +55,7 @@ export const Navbar = () => {
               alt="loading..."
               className="w-8 h-8 -sm:hidden"
             />
-            <Link to={`${PublicRoutes.SING_IN}`}>
+            <Link to={`/${PublicRoutes.SING_IN}`}>
             <button
               onClick={() => {
                 setOpenAccountMenu(!openAccountMenu);
@@ -82,7 +82,7 @@ export const Navbar = () => {
               alt="loading..."
               className="w-6 h-6 -sm:hidden"
             />
-            <Link to={`${PublicRoutes.SHOPPING_CART}`}>
+            <Link to={`/${PublicRoutes.SHOPPING_CART}`}>
             <button className="-lg:hidden">Carrito</button>
             </Link>
           </div>
