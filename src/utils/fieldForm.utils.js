@@ -1,7 +1,6 @@
 export function fieldFormUtils(state, setState, setModal){
     const saveMessage = (formValues) => {
         setState(formValues);
-        console.log(formValues);
         setModal(true);
       };
     

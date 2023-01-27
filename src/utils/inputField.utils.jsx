@@ -8,7 +8,7 @@ export function inputField(type, register, handleFormChange, errors) {
   if (type == "lastName") {
     placeholder = "Ingresa tu apellido";
   }
-  if (type == "mail") {
+  if (type == "mail" || "email") {
     placeholder = "Ingresa tu email";
   }
   if (type == "phone") {
@@ -16,6 +16,9 @@ export function inputField(type, register, handleFormChange, errors) {
   }
   if (type == "message") {
     placeholder = "Ingresa tu mensaje";
+  }
+  if(type == "password"){
+    placeholder = "Ingresa tu password"
   }
   return (
     <>
@@ -25,6 +28,7 @@ export function inputField(type, register, handleFormChange, errors) {
         placeholder={placeholder}
         className={fieldClass}
         onChange={handleFormChange}
+        type={type == "password" ? "password" : ""}
       />
       {(
         <p className={errorClass}>
