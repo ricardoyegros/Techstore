@@ -1,3 +1,4 @@
+import './App.css';
 import { BrowserRouter, Route } from "react-router-dom"
 import NotFoundRoutes from "../src/utils/NotFoundRoutes"
 import { Provider } from "react-redux";
@@ -8,24 +9,34 @@ import { Admin } from "./routes/privates-routes/privates-admin-routes/Admin";
 import { privateAdminRoutes } from "./routes/privates-routes/privates-admin-routes";
 import { PrivateRoutes } from "./routes/privates-routes/private-user-routes";
 import { User } from "./routes/privates-routes/private-user-routes/User";
-import './App.css';
 import HomePage from "./pages/Homepage";
 import { PublicRoutes } from "./routes/public-routes";
 import { lazy, Suspense } from "react";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
-
 import { Details } from "./pages/Details";
 import { getAllProducts } from "./redux/actions/getAllProducts";
 import { getAllCategorys } from "./redux/actions/getAllCategorys";
 import { getAllBrands } from "./redux/actions/getAllBrands";
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 const SignIn = lazy(() => import("./pages/auth/Sign In/SignIn"));
 const SignUp = lazy(() => import("./pages/auth/SignUp/SignUp"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 
-// const Details = lazy(() => import("./pages/Details.jsx"));
-
 function App() {
+  const { getIdTokenClaims, user } = useAuth0();
+
+  async function checkToken() {
+    let userData = user;
+    const claims = await getIdTokenClaims();
+    localStorage.setItem('token', claims.__raw);
+    if (claims.__raw) {
+      localStorage.setItem('user', JSON.stringify(userData));
+    }
+  };
+  checkToken();
+
   return (
     <div className="App">
       <Suspense fallback={<h1>Cargando.............</h1>}>
