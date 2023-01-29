@@ -31,9 +31,6 @@ export const LeftSideBar = ({filter, setFilter}) => {
     <div className="flex flex-col gap-2 justify-center items-center w-[30%] h-fit -lg:hidden">
       <div className="flex w-[80%] justify-between h-fit py-2 text-primary">
         <h4 className="select-none font-extrabold">Categorias</h4>
-        <button className="hover:bg-details hover:rounded-lg px-1 text-gray1 font-bold">
-          Reiniciar
-        </button>
       </div>
       <div className="h-1 w-[80%] bg-primary"></div>
 
@@ -55,9 +52,6 @@ export const LeftSideBar = ({filter, setFilter}) => {
 
       <div className="flex w-[80%] justify-between h-fit py-2 text-primary">
         <h4 className="font-extrabold select-none">Marcas</h4>
-        <button className="hover:bg-details hover:rounded-lg px-1 text-gray1 font-bold">
-          Reiniciar
-        </button>
       </div>
 
       <div className="h-1 w-[80%] bg-primary"></div>
