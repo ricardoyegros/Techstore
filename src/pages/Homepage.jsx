@@ -15,11 +15,11 @@ export default function HomePage() {
   const windowSize = useWindowSize();
   const device = deviceType(windowSize?.width);
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(getAllProducts());
+  useEffect(() => {
+    dispatch(getAllProducts({}));
     dispatch(getAllCategorys());
     dispatch(getAllBrands());
-  },[])
+  }, [])
   return (
     <Layout>
       <Carousel images={images} showButtons={true} />

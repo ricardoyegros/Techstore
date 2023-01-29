@@ -14,9 +14,6 @@ import { PublicRoutes } from "./routes/public-routes";
 import { lazy, Suspense } from "react";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import { Details } from "./pages/Details";
-import { getAllProducts } from "./redux/actions/getAllProducts";
-import { getAllCategorys } from "./redux/actions/getAllCategorys";
-import { getAllBrands } from "./redux/actions/getAllBrands";
 import { useAuth0 } from '@auth0/auth0-react';
 
 
@@ -35,7 +32,7 @@ function App() {
       localStorage.setItem('user', JSON.stringify(userData));
     }
   };
-  checkToken();
+  // checkToken();
 
   return (
     <div className="App">

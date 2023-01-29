@@ -2,26 +2,42 @@ import React, { useState } from "react";
 import { CardCarousel } from "../CardCarousel/CardCarousel";
 import { styleButton } from "../Carrousel/Carrousel";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
 
 export const SmCarousel = ({ device }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const allProducts = useSelector((state) => state.getAllProductsReducer.allProducts.content);
+
+  const [allProducts, setAllProducts] = useState(false);
+
+
+  useEffect(() => {
+    try {
+      async function fetchData() {
+        await axios.get('http://localhost:3001/filter')
+          .then(r => setAllProducts(r.data.content))
+      }
+      fetchData();
+    } catch (error) {
+      console.log(error)
+    }
+  }, []);
+
   const handleNextClick = () => {
     setCurrentIndex((currentIndex + 1) % components.length);
   };
-  
+
   const handlePrevClick = () => {
     setCurrentIndex((currentIndex - 1 + components.length) % components.length);
   };
 
   let products = [];
-  if(allProducts){
-    for(let i = 0; i < 9 ; i++){
-      products.push(allProducts[Math.floor(Math.random()*allProducts.length)]);
+  if (allProducts) {
+    for (let i = 0; i < 9; i++) {
+      products.push(allProducts[Math.floor(Math.random() * allProducts.length)]);
     }
   }
-  
+
   const toRender = (size, slice, products) => {
     let total = 3;
     if (size === "Desktop") total = 3;
