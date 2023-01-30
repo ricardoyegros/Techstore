@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import UserLogo from "../../assets/User-logo.svg";
 import HearthLogo from "../../assets/Hearth-logo.svg";
 import CartLogo from "../../assets/Cart-logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { PublicRoutes } from "../../routes/public-routes";
 import { useDispatch } from "react-redux";
@@ -15,6 +15,7 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const formRef = useRef();
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     if (location.pathname == "/sign-up" || location.pathname == "/sign-in" || location.pathname == "/forget-password") {
       setHidden(!hidden);
@@ -28,15 +29,22 @@ export const Navbar = () => {
     dispatch(getAllProducts({name: search}));
     formRef.current.reset();
   }
+  function clickOnLogo(){
+    if(location.pathname == "/"){
+      dispatch(getAllProducts({}))
+    }else{
+      navigate("/")
+    }
+  };
   return (
     <nav className="bg-primary w-full h-20 flex justify-center items-center">
       <div className="w-[90%] flex justify-between items-center text-text2">
         <div className="flex justify-center items-center gap-8 -sm:w-full -sm:justify-center">
-          <Link to="/">
-            <h2 className="text-4xl font-bold hover:cursor-pointer -sm:hidden">
+          {/* <Link to="/"> */}
+            <h2 onClick={clickOnLogo} className="text-4xl font-bold hover:cursor-pointer -sm:hidden">
               TechStore
             </h2>
-          </Link>
+          {/* </Link> */}
           <form ref={formRef} onSubmit={onSubmitSearchInput} className={hidden ? "hidden" : "flex w-fit -sm:w-full"}>
             <input
               type="text"
