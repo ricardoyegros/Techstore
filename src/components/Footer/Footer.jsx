@@ -2,9 +2,19 @@ import FacebookLogo from '../../assets/Facebook-logo.svg';
 import InstagramLogo from '../../assets/Instagram-logo.svg';
 import WhatsappLogo from '../../assets/Whatsapp-logo.svg';
 import TwitterLogo from '../../assets/Twitter-logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {PublicRoutes} from "../../routes/public-routes"
 export default function Footer() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    function copyrightLink(){
+        if(location.pathname === "/"){
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }else{
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
     return (
         <footer className="bg-details text-primary dark:bg-gray-900 w-full h-fit flex flex-col justify-center items-center py-16">
             <div className="flex justify-between w-5/6 flex-wrap -sm:justify-center -sm:gap-8">
@@ -63,11 +73,11 @@ export default function Footer() {
                 </div>
 
             </div>
-            <Link to="/">
-            <div className='w-full flex items-center justify-center font-extrabold text-primary'>
+            {/* <Link to="/"> */}
+            <div onClick={copyrightLink} className={`w-full flex items-center justify-center font-extrabold text-primary hover:cursor-pointer`} >
                 TechStore Copyright ® 2023
             </div>
-            </Link>
+            {/* </Link> */}
         </footer>
     )
 };
