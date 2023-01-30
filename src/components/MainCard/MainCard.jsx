@@ -5,19 +5,23 @@ import FavNoLogo from "../../assets/FavNo-logo.svg";
 import CartLogo from "../../assets/cart-logo-product.svg";
 import { StarRating } from "../StarsRating/StarRating";
 import {PublicRoutes} from "../../routes/public-routes"
+import { addToCart } from "../../redux/actions/cartActions";
+import { useDispatch } from "react-redux";
 
 export const MainCard = ({ salePrice, name, images, id }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [state, setState] = useState(false);
   return (
     <div className="flex flex-col w-[250px] h-[250px] items-center bg-transparent border-border border-2 rounded-3xl">
-      <Link to={`/${PublicRoutes.DETAIL}/${id}`}>
       <div className="flex justify-center w-[90%]">
-        <img
-          src={images[0].url}
-          alt="loading..."
-          className="h-36 w-36 mt-2.5 p-3 rounded-3xl select-none hover:cursor-pointer"
-        />
+        <Link to={`/${PublicRoutes.DETAIL}/${id}`}>
+          <img
+            src={images[0].url}
+            alt="loading..."
+            className="h-36 w-36 mt-2.5 p-3 rounded-3xl select-none hover:cursor-pointer"
+          />
+        </Link>
         <button
           onClick={() => setState(!state)}
           className="absolute mt-4 ml-48 rounded-full p-1"
@@ -30,7 +34,7 @@ export const MainCard = ({ salePrice, name, images, id }) => {
             />
           }
         </button>
-        <button className="absolute mt-14 ml-48 rounded-full p-1">
+        <button onClick={()=>{dispatch(addToCart(name)), navigate(`/${PublicRoutes.SHOPPING_CART}`)}} className="absolute mt-14 ml-48 rounded-full p-1">
           {
             <img
               src={CartLogo}
@@ -45,7 +49,6 @@ export const MainCard = ({ salePrice, name, images, id }) => {
         <h4>{name.substr(0, 13) + "..."}</h4>
         <h5>Price: {"$ " + salePrice}</h5>
       </div>
-      </Link>
     </div>
   );
 };

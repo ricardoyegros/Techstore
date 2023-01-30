@@ -6,6 +6,8 @@ import CartLogo from "../../assets/cart-logo-product.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailProduct } from "../../redux/actions/getDetailProduct";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../../redux/actions/cartActions";
+import { PublicRoutes } from "../../routes/public-routes";
 
 export const DetailCard = () => {
   const [state, setState] = useState(false);
@@ -57,7 +59,7 @@ export const DetailCard = () => {
                   />
                 }
               </button>
-              <button className=" rounded-full p-2 bg-[#eee]">
+              <button onClick={()=>{dispatch(addToCart(detailProduct.name)), navigate(`/${PublicRoutes.SHOPPING_CART}`)}} className=" rounded-full p-2 bg-[#eee]">
                 {
                   <img
                     src={CartLogo}
