@@ -16,7 +16,7 @@ export const Navbar = () => {
   const formRef = useRef();
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname == "/sign-up" || location.pathname == "/sign-in") {
+    if (location.pathname == "/sign-up" || location.pathname == "/sign-in" || location.pathname == "/forget-password") {
       setHidden(!hidden);
     }
   }, []);
