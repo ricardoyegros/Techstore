@@ -1,21 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import UserLogo from "../../assets/User-logo.svg";
 import HearthLogo from "../../assets/Hearth-logo.svg";
 import CartLogo from "../../assets/Cart-logo.svg";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { PublicRoutes } from "../../routes/public-routes";
+import { useDispatch } from "react-redux";
+import {getAllProducts} from "../../redux/actions/getAllProducts";
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
+  const [search, setSearch] = useState("");
   const [openAccountMenu, setOpenAccountMenu] = useState(false);
-
+  const dispatch = useDispatch();
+  const formRef = useRef();
   const location = useLocation();
   useEffect(() => {
     if (location.pathname == "/sign-up" || location.pathname == "/sign-in") {
       setHidden(!hidden);
     }
   }, []);
+  function onChangeInput(e){
+    setSearch(e.target.value);
+  };
+  function onSubmitSearchInput(e){
+    e.preventDefault();
+    dispatch(getAllProducts({name: search}));
+    formRef.current.reset();
+  }
   return (
     <nav className="bg-primary w-full h-20 flex justify-center items-center">
       <div className="w-[90%] flex justify-between items-center text-text2">
@@ -25,9 +37,10 @@ export const Navbar = () => {
               TechStore
             </h2>
           </Link>
-          <form className={hidden ? "hidden" : "flex w-fit -sm:w-full"}>
+          <form ref={formRef} onSubmit={onSubmitSearchInput} className={hidden ? "hidden" : "flex w-fit -sm:w-full"}>
             <input
               type="text"
+              onChange={onChangeInput}
               className={
                 hidden
                   ? "hidden"
