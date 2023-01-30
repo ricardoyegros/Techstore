@@ -15,6 +15,7 @@ import { lazy, Suspense } from "react";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import { Details } from "./pages/Details";
 import { useAuth0 } from '@auth0/auth0-react';
+import ForgetPassword from './components/SignInForm/ForgetPassword';
 
 
 const SignIn = lazy(() => import("./pages/auth/Sign In/SignIn"));
@@ -46,6 +47,7 @@ function App() {
               <Route path={PublicRoutes.CONTACT} element={<Contact />} />
               <Route path={PublicRoutes.SHOPPING_CART} element={<ShoppingCart />} />
               <Route path={PublicRoutes.DETAIL_ITEM} element={<Details />} />
+              <Route path={PublicRoutes.FORGET_PASSWORD} element={<ForgetPassword/>} />
               <Route element={<AuthGuard />}>
                 <Route path={`${PrivateRoutes.USER}/*`} element={<User />} />
               </Route>

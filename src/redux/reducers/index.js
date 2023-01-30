@@ -5,11 +5,13 @@ import getAllBrandsReducer from "./getAllBrands.reducer";
 import getDetailProductReducer from "./getDetailProduct.reducer";
 import userRegisterReducer from "./userRegister.reducer";
 import shoppingCartReducer from "./shoppingCart.reducer";
+import userLoginReducer from "./postUserLogin.reducer";
 export default combineReducers({
   getAllProductsReducer,
   getAllCategorysReducer,
   getAllBrandsReducer,
   getDetailProductReducer,
   userRegisterReducer,
-  shoppingCartReducer
+  shoppingCartReducer,
+  userLoginReducer
 });
