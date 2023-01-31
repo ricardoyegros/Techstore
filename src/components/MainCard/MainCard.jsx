@@ -6,8 +6,8 @@ import CartLogo from "../../assets/cart-logo-product.svg";
 import { StarRating } from "../StarsRating/StarRating";
 import { PublicRoutes } from "../../routes/public-routes";
 import { addToCart } from "../../redux/actions/cartActions";
-import { addFavorite } from "../../redux/actions/Wishlist/addFavorite"
-import { removeFavorite } from "../../redux/actions/Wishlist/removeFavorite"
+import { addFavorite } from "../../redux/actions/Wishlist/addFavorite";
+import { removeFavorite } from "../../redux/actions/Wishlist/removeFavorite";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
@@ -15,22 +15,19 @@ export const MainCard = ({ salePrice, name, images, id }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
-  const isLogged =JSON.parse(sessionStorage.getItem("user"));
+  const isLogged = JSON.parse(sessionStorage.getItem("user"));
   function addOrRemoveFromFavorites() {
-    setState(!state)
-  };
+    setState(!state);
+  }
 
   useEffect(() => {
-    if (state) {
-      dispatch(
-        addFavorite(JSON.parse(JSON.parse(sessionStorage.user)).id, id)
-      )
-    } else {
-      dispatch(
-        removeFavorite(JSON.parse(sessionStorage.user).id, id)
-      )
+    if(sessionStorage.user){
+      if (state) {
+        dispatch(addFavorite(JSON.parse(sessionStorage.user).id, id));
+      } else {
+        dispatch(removeFavorite(JSON.parse(sessionStorage.user).id, id));
+      }
     }
-
   }, [state]);
 
   return (
@@ -58,19 +55,21 @@ export const MainCard = ({ salePrice, name, images, id }) => {
             />
           }
         </button>
-        {isLogged && <button
-          onClick={addOrRemoveFromFavorites}
-          className="absolute mt-4 ml-48 rounded-full p-1"
-          id={id}
-        >
-          {
-            <img
-              src={state ? FavLogo : FavNoLogo}
-              alt="loading..."
-              className="w-6 h-6 hover:scale-125 transition-all"
-            />
-          }
-        </button>}
+        {isLogged && (
+          <button
+            onClick={addOrRemoveFromFavorites}
+            className="absolute mt-4 ml-48 rounded-full p-1"
+            id={id}
+          >
+            {
+              <img
+                src={state ? FavLogo : FavNoLogo}
+                alt="loading..."
+                className="w-6 h-6 hover:scale-125 transition-all"
+              />
+            }
+          </button>
+        )}
       </div>
       <div className="w-[90%] h-full flex flex-col items-center text-primary">
         <StarRating numberOfStars={3.5} sizeStar={8} />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const DropDown = ({ drop, setDrop }) => {
-    const isLogged = JSON.parse(JSON.parse(sessionStorage.user)).id;
+    const isLogged = sessionStorage.user
     const classForLi = 'bg-primary hover:bg-slate-400 p-2';
     return (
         <ul className={`${drop ? 'visible' : 'hidden'} absolute translate-y-10 translate-x-4 h-[50px] w-[120px]`}>
