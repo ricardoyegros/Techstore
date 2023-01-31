@@ -87,6 +87,7 @@ function SignInForm() {
               password:decoded.sub
              }
               dispatch(registerUser(userData));
+              setOpenModal(!openModal)
             }}
             onError={() => {
               console.log("Login Failed");

@@ -25,7 +25,16 @@ export default function userReducer(state = initialState, action) {
         status: action.payload.status,
         name: action.payload.name,
         token: action.payload.token
-      } 
+      };
+    case USER.LOGOUT:
+     
+      return {
+        ...state,
+        name:"",
+        status:"",
+        token:"",
+        id:""
+      }
     default:
       return state;
   }
