@@ -11,6 +11,7 @@ import Modal from "../Modal/Modal";
 import ModalError from "../Modal/ModalError";
 import jwt_decode from "jwt-decode";
 import setSessionStorage from "../../utils/setSessionStorage.utils";
+import { registerUser } from "../../redux/actions/UserRegister/putUserRegister";
 
 function SignInForm() {
   /* State modal */
@@ -84,9 +85,10 @@ function SignInForm() {
               name: decoded.given_name,
               lastName:decoded.family_name,
               email:decoded.email,
-              token:decoded.sub
+              password:decoded.sub
              }
-              setSessionStorage("user",userData);
+              console.log(userData);
+              dispatch(registerUser(userData));
               setOpenModal(!openModal);
             }}
             onError={() => {

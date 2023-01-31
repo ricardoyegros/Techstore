@@ -14,13 +14,13 @@ export default function userLoginReducer(state = initialState, action) {
         token: action.payload.token
 
       }
-   /*  case LOGOUT_USER:
+  /*   case LOGOUT_USER:
        
       return {
         ...state,
         userEmail: {},
         token:{}
-      } */
+      } */ 
     default:
       return state;
   }
