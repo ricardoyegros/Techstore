@@ -5,13 +5,12 @@ import { signInSchema } from "../../schemas/signIn.schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { GoogleLogin } from "@react-oauth/google";
 import { fieldFormUtils } from "../../utils/fieldForm.utils";
-import { userLogin } from "../../redux/actions/userLogin";
-import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../redux/actions/UserActions/UserActions";
+import { useDispatch } from "react-redux";
 import Modal from "../Modal/Modal";
 import ModalError from "../Modal/ModalError";
 import jwt_decode from "jwt-decode";
-import setSessionStorage from "../../utils/setSessionStorage.utils";
-import { registerUser } from "../../redux/actions/UserRegister/putUserRegister";
+import { registerUser } from "../../redux/actions/UserActions/UserActions";
 
 function SignInForm() {
   /* State modal */
@@ -30,8 +29,8 @@ function SignInForm() {
   });
   const { saveMessage, handleFormChange } = fieldFormUtils(
     user,
-    setUser,
-    setOpenModal
+    setUser
+
   );
 
   /* dispatch redux */
@@ -51,21 +50,21 @@ function SignInForm() {
     title: "Error al iniciar sesión",
     messageModal: "Revisa tus datos ingresados",
     buttonMessage: "Cerrar",
-    setError,
+    setErrorModal:setError,
   };
 
   return (
     <>
       {error && <ModalError {...propsModalError} />}
-      {openModal && <Modal {...propsModal} />}
+      {openModal && <Modal {...propsModal} />} 
       <form
         onSubmit={handleSubmit(saveMessage)}
         className=" border rounded-lg min-w-[27rem]"
       >
         <div className="flex flex-col gap-6 w-full lg:p-16 md:p-12 sm:p-8 xs:p-4">
           <label htmlFor="userSignIn">Email</label>
-          {inputField("mail", register, handleFormChange, errors)}
-          {console.log(errors)}
+          {inputField("email", register, handleFormChange, errors)}
+    
           <label htmlFor="passSignIn">Contraseña</label>
           {inputField("password", register, handleFormChange, errors)}
           <button
@@ -87,9 +86,7 @@ function SignInForm() {
               email:decoded.email,
               password:decoded.sub
              }
-              console.log(userData);
               dispatch(registerUser(userData));
-              setOpenModal(!openModal);
             }}
             onError={() => {
               console.log("Login Failed");

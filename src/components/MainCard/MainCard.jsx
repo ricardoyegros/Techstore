@@ -14,7 +14,7 @@ export const MainCard = ({ salePrice, name, images, id }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
-  const isLogged =JSON.parse(JSON.parse(sessionStorage.getItem("user")));
+  const isLogged =JSON.parse(sessionStorage.getItem("user"));
   function addOrRemoveFromFavorites() {
     setState(!state);
     if(state){
@@ -23,7 +23,7 @@ export const MainCard = ({ salePrice, name, images, id }) => {
       )
     }else{
       dispatch(
-        removeFavorite(JSON.parse(JSON.parse(sessionStorage.user)).id, id)
+        removeFavorite(JSON.parse(sessionStorage.user).id, id)
       )
     }
   }

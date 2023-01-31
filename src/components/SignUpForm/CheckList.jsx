@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CheckLogo from "../../assets/CheckLogo/CheckLogo";
 import Modal from "../Modal/Modal";
-import { registerUser } from "../../redux/actions/UserRegister/putUserRegister";
+import { registerUser } from "../../redux/actions/UserActions/UserActions";
 import { useDispatch , useSelector } from "react-redux";
 import fieldsForCheckList from "./fieldsForCheckList";
 import Checker from "./FormChecker";
@@ -41,7 +41,7 @@ function CheckList() {
 
   /* submit */
   const dispatch = useDispatch()
-  const status = useSelector((state)=>state.userRegisterReducer.status);
+  const status = useSelector((state)=>state.userReducer.status);
 
   const onRegisterUser = () =>{
      dispatch(registerUser(user));
