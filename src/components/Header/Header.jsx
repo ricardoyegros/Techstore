@@ -26,12 +26,6 @@ export default function Header() {
         <div className="flex w-4/5 items-center justify-between h-7 -sm:hidden">
           <h4>¿Necesitas Ayuda? Contactanos +54 3704716194</h4>
           <h4>{`Bienvenido/a ${isLogged}`}</h4>
-          <h4
-            className="hover:cursor-pointer"
-            onClick={() => sessionStorage.clear()}
-          >
-            Logout
-          </h4>
           <div className="flex w-fit items-center gap-16">
             <div className="flex w-fit gap-2 items-center">
               <img src={LocationLogo} className="w-6 h-6" />
