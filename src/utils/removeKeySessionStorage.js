@@ -1,3 +1,3 @@
-export default function removeKeySessionStorage({key}){
+export default function removeKeySessionStorage(key){
     sessionStorage.removeItem(key);
 };

@@ -30,7 +30,6 @@ export function registerUser(dataUser) {
 export function userLogin(userData,openModal,setOpenModal,error,setError) {
   return async function (dispatch) {
     try {
-      console.log(userData);
       let userLoginRes = await axios.post(
         `http://localhost:3001/users/login`,
         userData
@@ -45,7 +44,7 @@ export function userLogin(userData,openModal,setOpenModal,error,setError) {
         };
         setOpenModal(!openModal)
         setSessionStorage("user",loginData)
-        return dispatch({ type: USER.LOGIN, payload: loginData });
+        return (dispatch({ type: USER.LOGIN, payload: loginData }));
       }
     } catch (e) {
       console.log(e);
@@ -56,7 +55,9 @@ export function userLogin(userData,openModal,setOpenModal,error,setError) {
 
 export function logoutUser(){
   return function(dispatch){
-    return dispatch({ type: USER.LOGOUT});
+    sessionStorage.clear();
+    return dispatch({ type: USER.LOGOUT,payload:"hola"});
 
   }
-}
+};
+
