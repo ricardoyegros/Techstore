@@ -14,7 +14,6 @@ import { PublicRoutes } from "./routes/public-routes";
 import { lazy, Suspense } from "react";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import { Details } from "./pages/Details";
-import { useAuth0 } from '@auth0/auth0-react';
 import ForgetPassword from './components/SignInForm/ForgetPassword';
 
 
@@ -23,17 +22,6 @@ const SignUp = lazy(() => import("./pages/auth/SignUp/SignUp"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 function App() {
-  const { getIdTokenClaims, user } = useAuth0();
-
-  async function checkToken() {
-    let userData = user;
-    const claims = await getIdTokenClaims();
-    localStorage.setItem('token', claims.__raw);
-    if (claims.__raw) {
-      localStorage.setItem('user', JSON.stringify(userData));
-    }
-  };
-  // checkToken();
 
   return (
     <div className="App">

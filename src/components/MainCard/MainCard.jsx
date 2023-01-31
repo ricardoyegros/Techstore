@@ -6,9 +6,10 @@ import CartLogo from "../../assets/cart-logo-product.svg";
 import { StarRating } from "../StarsRating/StarRating";
 import { PublicRoutes } from "../../routes/public-routes";
 import { addToCart } from "../../redux/actions/cartActions";
-import {addFavorite} from "../../redux/actions/Wishlist/addFavorite"
-import {removeFavorite} from "../../redux/actions/Wishlist/removeFavorite"
+import { addFavorite } from "../../redux/actions/Wishlist/addFavorite"
+import { removeFavorite } from "../../redux/actions/Wishlist/removeFavorite"
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export const MainCard = ({ salePrice, name, images, id }) => {
   const navigate = useNavigate();
@@ -16,17 +17,22 @@ export const MainCard = ({ salePrice, name, images, id }) => {
   const [state, setState] = useState(false);
   const isLogged =JSON.parse(sessionStorage.getItem("user"));
   function addOrRemoveFromFavorites() {
-    setState(!state);
-    if(state){
+    setState(!state)
+  };
+
+  useEffect(() => {
+    if (state) {
       dispatch(
         addFavorite(JSON.parse(JSON.parse(sessionStorage.user)).id, id)
       )
-    }else{
+    } else {
       dispatch(
         removeFavorite(JSON.parse(sessionStorage.user).id, id)
       )
     }
-  }
+
+  }, [state]);
+
   return (
     <div className="flex flex-col w-[250px] h-[250px] items-center bg-transparent border-border border-2 rounded-3xl">
       <div className="flex justify-center w-[90%]">
@@ -52,7 +58,7 @@ export const MainCard = ({ salePrice, name, images, id }) => {
             />
           }
         </button>
-        {   isLogged &&     <button
+        {isLogged && <button
           onClick={addOrRemoveFromFavorites}
           className="absolute mt-4 ml-48 rounded-full p-1"
           id={id}
