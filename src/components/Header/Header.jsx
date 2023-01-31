@@ -1,8 +1,15 @@
 import { Navbar } from "../Navbar/Navbar";
 import LocationLogo from "../../assets/Location-logo.svg";
 import ShippingLogo from "../../assets/Shipping-logo.svg";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+   let user = useSelector((state)=>state.userReducer);
+  if(user && !user.name){
+    user = JSON.parse(sessionStorage.getItem("user"))
+  }
+
+console.log(user); 
   return (
     <>
       <div className="w-full flex justify-center items-center h-16 ">
@@ -12,7 +19,8 @@ export default function Header() {
         </div>
         <div className="flex w-4/5 items-center justify-between h-7 -sm:hidden">
           <h4>¿Necesitas Ayuda? Contactanos +54 3704716194</h4>
-          <h4>{sessionStorage.user ? "Bienvenido/a " + JSON.parse(JSON.parse(sessionStorage.user)).name  : "Bienvenido invitado/a"}</h4>
+          {/* aca traer de reducer el nombre de usuario asi lo hacemos dinámico */}
+           <h4>{user?.name ? `Bienvenido/a ${user.name}`  : "Bienvenido invitado/a"}</h4> 
           <h4 className="hover:cursor-pointer" onClick={()=>sessionStorage.clear()}>Logout</h4>
           <div className="flex w-fit items-center gap-16">
             <div className="flex w-fit gap-2 items-center">

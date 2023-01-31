@@ -66,7 +66,7 @@ export default function WishProducts() {
                     {item.brand.name}
                   </span>
                   <span
-                    onClick={() => dispatch(removeFavorite(JSON.parse(JSON.parse(sessionStorage.user)).id,item.id))}
+                    onClick={() => dispatch(removeFavorite(JSON.parse(sessionStorage.user).id,item.id))}
                     className=" hover:cursor-pointer font-semibold hover:text-error hover:font-bold text-gray-500 text-xs"
                   >
                     Eliminar
