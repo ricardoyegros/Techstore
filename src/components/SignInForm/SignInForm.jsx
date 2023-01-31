@@ -63,7 +63,9 @@ function SignInForm() {
           </button>
           <span className="text-center">or</span>
           <div className="flex justify-center">
+          <div className={openModal ? "hidden": ""}>
           <GoogleLogin
+          size="large"
             onSuccess={(credentialResponse) => {
               /* Decodificador de respuesta de goole */
               let decoded = jwt_decode(credentialResponse.credential);
@@ -81,6 +83,7 @@ function SignInForm() {
               console.log("Login Failed");
             }}
           />
+          </div>
           </div>
         </div>
       </form>
