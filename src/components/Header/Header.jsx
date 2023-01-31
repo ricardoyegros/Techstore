@@ -8,11 +8,15 @@ export default function Header() {
   const [isLogged, setIsLogged] = useState();
 
   let user = useSelector((state) => state.userReducer);
+  let sessionUser = sessionStorage;
+ 
   useEffect(() => {
-    if (user.name.length) {
-      setIsLogged(user.name);
+    if (!user.name.length && !sessionUser.length) {
+      setIsLogged("invitado");
+    } else if (user.name.length){
+      setIsLogged(user.name)
     } else {
-      setIsLogged("Invitado");
+      setIsLogged(JSON.parse(sessionUser.user).name)
     }
   }, [user]);
 
@@ -26,6 +30,7 @@ export default function Header() {
         <div className="flex w-4/5 items-center justify-between h-7 -sm:hidden">
           <h4>¿Necesitas Ayuda? Contactanos +54 3704716194</h4>
           <h4>{`Bienvenido/a ${isLogged}`}</h4>
+
           <div className="flex w-fit items-center gap-16">
             <div className="flex w-fit gap-2 items-center">
               <img src={LocationLogo} className="w-6 h-6" />
