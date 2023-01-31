@@ -18,9 +18,9 @@ function ForgetPassword() {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm( useForm({
+  } = useForm({
     resolver: yupResolver(signInSchema),
-  }));
+  });
   const { saveMessage, handleFormChange } = fieldFormUtils(
     email,
     setEmail,
@@ -37,7 +37,6 @@ function ForgetPassword() {
           <div className="flex flex-col gap-9 w-full lg:p-16 md:p-12 sm:p-8 xs:p-4">
             <label>Ingrese su email</label>
             {inputField("email", register, handleFormChange, errors)}
-            {console.log(errors)}
             <button  className="bg-secondary rounded-lg lg:p-2 xs:p-4">
               Recuperar contraseña
             </button>

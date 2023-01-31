@@ -26,6 +26,16 @@ export function registerUser(dataUser) {
             }    
         }
     };
+export function forgotPassword(dataUser) {
+        return async function(dispatch){
+            try {
+                let response = await axios.post(`http://localhost:3001/users/forgot`,dataUser)
+             
+            } catch (error) {
+                alert(error.message);
+            }    
+        }
+    };
 
 export function userLogin(userData,openModal,setOpenModal,error,setError) {
   return async function (dispatch) {
@@ -56,7 +66,7 @@ export function userLogin(userData,openModal,setOpenModal,error,setError) {
 export function logoutUser(){
   return function(dispatch){
     sessionStorage.clear();
-    return dispatch({ type: USER.LOGOUT,payload:"hola"});
+    return dispatch({ type: USER.LOGOUT});
 
   }
 };
