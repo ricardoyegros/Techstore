@@ -8,4 +8,5 @@ export const PrivateRoutes = {
     CONFIG: 'config',
     LOGOUT: 'logout',
     UPDATE_PROFILE: 'update-profile',
+    WISHLIST: 'wishlist'
   };

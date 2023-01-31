@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { PublicRoutes } from "../../routes/public-routes";
 import { useDispatch } from "react-redux";
 import {getAllProducts} from "../../redux/actions/getAllProducts";
+import { PrivateRoutes } from "../../routes/privates-routes/private-user-routes";
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -89,6 +90,7 @@ export const Navbar = () => {
             {/*Dropdown Menu*/}
             {/*Dropdown Menu End*/}
           </div>
+          <Link to={`/${PrivateRoutes.USER}/${PublicRoutes.WISHLIST}`}>
           <div className="flex justify-center items-center gap-1 hover:cursor-pointer hover:scale-105">
             <img
               src={HearthLogo}
@@ -97,16 +99,17 @@ export const Navbar = () => {
             />
             <h4 className="-lg:hidden">Favoritos</h4>
           </div>
+          </Link>
+          <Link to={`/${PublicRoutes.SHOPPING_CART}`}>
           <div className="flex justify-center items-center gap-1 hover:cursor-pointer hover:scale-105">
             <img
               src={CartLogo}
               alt="loading..."
               className="w-6 h-6 -sm:hidden"
             />
-            <Link to={`/${PublicRoutes.SHOPPING_CART}`}>
-            <button className="-lg:hidden">Carrito</button>
-            </Link>
+            <h4 className="-lg:hidden">Carrito</h4>
           </div>
+            </Link>
         </div>
       </div>
     </nav>

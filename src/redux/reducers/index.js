@@ -6,6 +6,7 @@ import getDetailProductReducer from "./getDetailProduct.reducer";
 import userRegisterReducer from "./userRegister.reducer";
 import shoppingCartReducer from "./shoppingCart.reducer";
 import userLoginReducer from "./postUserLogin.reducer";
+import wishlistReducer from "./wishlist.reducer";
 export default combineReducers({
   getAllProductsReducer,
   getAllCategorysReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   getDetailProductReducer,
   userRegisterReducer,
   shoppingCartReducer,
-  userLoginReducer
+  userLoginReducer,
+  wishlistReducer
 });
