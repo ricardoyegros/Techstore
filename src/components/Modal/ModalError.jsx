@@ -1,5 +1,5 @@
 
-export default function ModalError({title, messageModal, buttonMessage, setErrorModal}) {
+export default function ModalError({props}) {
 
   return (
     <div className="flex fixed inset-0 justify-center items-center bg-black bg-opacity-25 backdrop-blur-sm">
@@ -12,21 +12,21 @@ export default function ModalError({title, messageModal, buttonMessage, setError
         </svg>
         </div>
         <h3 className="text-lg mt-2 leading-6 font-medium text-primary">
-          {title}
+          {props.titleMsg}
         </h3>
         <div className="mt-2 px-7 py-3">
           <p className="text-sm text-primary">
-            {messageModal}
+            {props.msgModal}
           </p>
         </div>
         <div className="items-center px-4 py-3">
           <button
-          onClick={()=>{setErrorModal(false)}}
+          onClick={()=>{props.state(false)}}
             className="px-4 py-2 bg-error text-white
                         text-base font-medium rounded-md w-full
                         shadow-sm hover:font-semibold focus:outline-none focus:ring-2 focus:ring-purple-300"
           >
-            {buttonMessage}
+            {props.btnMsg}
           </button>
         </div>
       </div>

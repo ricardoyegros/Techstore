@@ -4,7 +4,8 @@ export const USER ={
     REGISTER:"REGISTER_USER",
     LOGIN:"LOGIN_USER",
     LOGOUT:"LOGOUT",
-    UPDATE:"UPDATE"
+    UPDATE:"UPDATE",
+    FORGOT:"FORGOT"
 }
 
 export function registerUser(dataUser) {
@@ -22,7 +23,21 @@ export function registerUser(dataUser) {
                 setSessionStorage("user",userData)
                 return (dispatch({type:USER.REGISTER,payload:userData}))   
             } catch (error) {
-                alert(error.message);
+                  alert(error.message);
+            }    
+        }
+    };
+export function forgotPassword(dataUser,openModal, setOpenModal, error, setError) {
+        return async function(dispatch){
+            try {
+                let response = await axios.post(`http://localhost:3001/users/forgot`,dataUser)
+              if(response.status == 200){
+                setOpenModal(!openModal)
+              }
+              return dispatch({type:USER.FORGOT})
+            } catch (e) {
+              console.log(e);
+               setError(!error)
             }    
         }
     };
@@ -47,7 +62,7 @@ export function userLogin(userData,openModal,setOpenModal,error,setError) {
         return (dispatch({ type: USER.LOGIN, payload: loginData }));
       }
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
       setError(!error); 
     }
   };
@@ -56,7 +71,7 @@ export function userLogin(userData,openModal,setOpenModal,error,setError) {
 export function logoutUser(){
   return function(dispatch){
     sessionStorage.clear();
-    return dispatch({ type: USER.LOGOUT,payload:"hola"});
+    return dispatch({ type: USER.LOGOUT});
 
   }
 };

@@ -11,6 +11,7 @@ import Modal from "../Modal/Modal";
 import ModalError from "../Modal/ModalError";
 import jwt_decode from "jwt-decode";
 import { registerUser } from "../../redux/actions/UserActions/UserActions";
+import { propsModal } from "../../utils/propsModal";
 
 function SignInForm() {
   /* State modal */
@@ -39,24 +40,11 @@ function SignInForm() {
     dispatch(userLogin(user, openModal, setOpenModal, error, setError));
   };
 
-  /* Props del modal */
-  const propsModal = {
-    title: "Has iniciado sesión",
-    messageModal: " ",
-    buttonMessage: "Volver al inicio",
-    setModal: setOpenModal,
-  };
-  const propsModalError = {
-    title: "Error al iniciar sesión",
-    messageModal: "Revisa tus datos ingresados",
-    buttonMessage: "Cerrar",
-    setErrorModal:setError,
-  };
 
   return (
     <>
-      {error && <ModalError {...propsModalError} />}
-      {openModal && <Modal {...propsModal} />} 
+      {error && <ModalError props={propsModal("Error al iniciar sesión","Revisa tus datos ingresados","Cerrar",setError)}/>}
+      {openModal && <Modal props={propsModal("Has iniciado sesión","","Volver al inicio",setOpenModal)} />} 
       <form
         onSubmit={handleSubmit(saveMessage)}
         className=" border rounded-lg min-w-[27rem]"
