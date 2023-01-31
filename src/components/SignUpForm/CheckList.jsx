@@ -5,6 +5,7 @@ import { registerUser } from "../../redux/actions/UserActions/UserActions";
 import { useDispatch , useSelector } from "react-redux";
 import fieldsForCheckList from "./fieldsForCheckList";
 import Checker from "./FormChecker";
+import { propsModal } from "../../utils/propsModal";
 
 function CheckList() {
   /* Estados */
@@ -21,14 +22,7 @@ function CheckList() {
     contact:false
   });
   
-  /* Props del modal */
-  const propsModal = {
-    title:"¡Éxito!",
-    messageModal:"Te has registrado satisfactoriamente",
-    buttonMessage: "Volver al inicio",
-    setModal:setOpenModal,
-  };
-  /* Funcion que renderiza checkbutton */
+
   const checkButton = (type,setState,state) =>{
     if (user &&  user[type] && (!errorMsg[type] || !errorMsg[type].length)) {
       return (<button onClick={()=>setState({...state,[type]:!state[type]})} type="button" className=" flex items-center  justify-center bg-secondary rounded-lg p-1">
@@ -41,8 +35,7 @@ function CheckList() {
 
   /* submit */
   const dispatch = useDispatch()
-  const status = useSelector((state)=>state.userReducer.status);
-
+  let status = useSelector((state)=>state.userReducer.status);
   const onRegisterUser = () =>{
      dispatch(registerUser(user));
      if(status == 201){
@@ -60,7 +53,7 @@ function CheckList() {
 
   return (
     <div className="flex flex-col gap-5 w-full ml-4">
-      {openModal && <Modal {...propsModal}/>}
+    {openModal && <Modal props={propsModal("¡Éxito!","Te has registrado satisfactoriamente","Volver al inicio",setOpenModal)} />}
       <div className="flex flex-col">
         {fieldsForCheckList("email", checkButton, setOpenCheck, openCheck)}
         {openCheck.email && <Checker type={"email"} errorMsg={errorMsg} setErrorMsg={setErrorMsg} user={user} openCheck={openCheck} setOpenCheck={setOpenCheck} setUser={setUser} />}

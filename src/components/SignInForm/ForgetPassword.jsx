@@ -40,7 +40,7 @@ const dispatchEmail = () => {
     dispatch(forgotPassword(email, openModal, setOpenModal, error, setError))
   }
 };
-console.log(email);
+
   return (
     <>
     {error && <ModalError props={propsModal("Error","Revisa tus datos ingresados","Cerrar",setError)}/>}

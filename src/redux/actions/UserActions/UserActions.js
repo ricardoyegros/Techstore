@@ -23,7 +23,7 @@ export function registerUser(dataUser) {
                 setSessionStorage("user",userData)
                 return (dispatch({type:USER.REGISTER,payload:userData}))   
             } catch (error) {
-                alert(error.message);
+                  alert(error.message);
             }    
         }
     };
