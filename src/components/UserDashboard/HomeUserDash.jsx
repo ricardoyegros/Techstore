@@ -7,7 +7,7 @@ function HomeUserDash() {
     <div>
         <UserDashboard>
           <div className='w-full'>
-            
+            <h1>Cuenta</h1>
           </div>
         </UserDashboard>
     </div>
