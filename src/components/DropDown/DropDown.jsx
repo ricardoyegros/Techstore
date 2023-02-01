@@ -11,7 +11,7 @@ export const DropDown = ({ drop, setDrop }) => {
     const classForLi = 'bg-primary hover:bg-slate-400 p-2';
     return (
         <ul className={`${drop ? 'visible' : 'hidden'} absolute translate-y-10 translate-x-4 h-[50px] w-[120px]`}>
-            <li className={classForLi}>{isLogged ? (<Link to={`${PrivateRoutes.USER}/${PrivateRoutes.DASHBOARD}`}>Ir a panel</Link>) :(<Link to={`/${PublicRoutes.SING_IN}`}>Iniciar Sesión</Link>)}</li>
+            <li className={classForLi}>{isLogged ? (<Link to={`/${PrivateRoutes.USER}/${PrivateRoutes.DASHBOARD}`}>Ir a panel</Link>) :(<Link to={`/${PublicRoutes.SING_IN}`}>Iniciar Sesión</Link>)}</li>
             <li className={classForLi}>{isLogged ? (<button type='button' onClick={()=>dispatch(logoutUser())}>Cerrar Sesion</button>) : (<Link to={`/${PublicRoutes.SING_UP}`}>Crear cuenta</Link>)}</li>
         </ul>
     )
