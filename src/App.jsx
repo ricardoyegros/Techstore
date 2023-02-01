@@ -39,7 +39,6 @@ function App() {
               <Route path={PublicRoutes.FORGET_PASSWORD} element={<ForgetPassword/>} />
               <Route element={<AuthGuard />}>
                 <Route path={`${PrivateRoutes.USER}/*`} element={<User />} />
-                <Route path={`${PrivateRoutes.USER}/${PrivateRoutes.DASHBOARD}/*`} element={<UserDash />} />
               </Route>
               <Route element={<AdminGuard />}>
                 <Route path={`${privateAdminRoutes.ADMIN}/*`} element={<Admin />} />

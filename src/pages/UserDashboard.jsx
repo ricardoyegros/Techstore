@@ -4,13 +4,11 @@ import UserDashoardMenu from '../components/UserDashboard/UserDashoardMenu';
 
 function UserDashboard({children}) {
   return (
-    <>
     <Layout>
     <UserDashoardMenu>
       {children}
     </UserDashoardMenu>
     </Layout>
-      </>
   )
 }
 

@@ -1,6 +1,5 @@
 import {
-  PrivateRoutes,
-  PrivateRoutesDash,
+  PrivateRoutes, PrivateRoutesDash,
 } from "../../routes/privates-routes/private-user-routes";
 import {MdManageAccounts} from "react-icons/md"
 import {BiPurchaseTag} from "react-icons/bi"
@@ -13,7 +12,7 @@ export const MenuOptions = [
     },
     {
       buttonName: "Ordenes",
-      Links: `/${PrivateRoutes.USER}/${PrivateRoutes.DASHBOARD}/${PrivateRoutesDash.ORDERS}`,
+      Links: `/${PrivateRoutes.USER}/${PrivateRoutesDash.ORDERS}`,
       icon: <BiPurchaseTag className={classForIcons}/>
     },
   ];

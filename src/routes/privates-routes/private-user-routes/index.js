@@ -8,7 +8,8 @@ export const PrivateRoutes = {
     CONFIG: 'config',
     LOGOUT: 'logout',
     UPDATE_PROFILE: 'update-profile',
-    WISHLIST: 'wishlist'
+    WISHLIST: 'wishlist',
+    ORDERS:"orders"
   };
 export const PrivateRoutesDash = {
    ORDERS:"orders",
