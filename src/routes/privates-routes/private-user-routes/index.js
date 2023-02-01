@@ -10,3 +10,8 @@ export const PrivateRoutes = {
     UPDATE_PROFILE: 'update-profile',
     WISHLIST: 'wishlist'
   };
+export const PrivateRoutesDash = {
+   ORDERS:"orders",
+   ACCOUNT:"pagina-2",
+   PAGINA_3:"pagina-3",
+  };
