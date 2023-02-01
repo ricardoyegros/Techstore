@@ -32,6 +32,7 @@ export const RightSideBar = ({ filter, setFilter, handleCheck }) => {
         </select>
         </form>
       </div>
+    <Pagination pages={allProducts.totalPage} filter={filter} setFilter={setFilter} />
       <div className='flex flex-row justify-center flex-wrap gap-8'>
         {allProducts.content && (!allProducts.content[0] ? <h2>No se encontraron los productos</h2> : allProducts.content?.slice(0, 12).map((product) => (<MainCard {...product} />)))}
       </div>
