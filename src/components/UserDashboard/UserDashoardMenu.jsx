@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import  UserLogo  from "../../assets/User-logo.svg"
 import {
   PrivateRoutes,
   PrivateRoutesDash,
