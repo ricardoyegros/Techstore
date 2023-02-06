@@ -9,6 +9,7 @@ export default function Cart() {
   const subTitle = ["Cantidad", "Precio Unitario", "Sub-Total"];
   const shipping = 10;
   const cart = useSelector((state)=> state.shoppingCartReducer.cart);
+
   return (
     <div className="container mx-auto mt-10 ">
       <div className="flex shadow-md mb-20">
@@ -145,7 +146,9 @@ export default function Cart() {
               <span>Costo Total</span>
               <span>${Math.round(cart.reduce((total, item) => total = total + (item.salePrice * item.quantity),shipping))}</span>
             </div>
-            <button className="bg-primary font-semibold hover:font-bold py-3 text-sm text-white uppercase w-full">
+            <button className="bg-primary font-semibold hover:font-bold py-3 text-sm text-white uppercase w-full"
+            onClick={() => navigate('/user/shipping-form')}
+            >
               Pagar
             </button>
           </div>

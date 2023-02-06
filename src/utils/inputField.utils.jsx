@@ -17,8 +17,17 @@ export function inputField(type, register, handleFormChange, errors) {
   if (type == "message") {
     placeholder = "Ingresa tu mensaje";
   }
-  if(type == "password"){
+  if (type == "password") {
     placeholder = "Ingresa tu password"
+  }
+  if (type == "address") {
+    placeholder = "Ingresa tu dirección"
+  }
+  if (type == "CP") {
+    placeholder = "Ingresa un código postal"
+  }
+  if(type == "userName") {
+    placeholder = "Ingrese nombre de quién recibe"
   }
   return (
     <>
